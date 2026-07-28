@@ -1,4 +1,6 @@
-import type { Route } from "./+types/home";
+import type { Route } from "./+types/route";
+import { Footer } from "~/components/Footer";
+
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -14,5 +16,10 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <div>ChefKart Home</div>;
+  return <>
+  <div className="bg-orange-50 text-center py-2.5 px-4">
+    Main content goes here
+    </div>
+    <Footer />
+  </>;
 }

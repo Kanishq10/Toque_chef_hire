@@ -7,9 +7,27 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  margin: 0;
+  width: 100%;
+  /* @apply bg-white dark:bg-gray-950;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
-  }
+  } */
 }
+
+:root {
+  --charcoal: #1C1C1C;
+  --antique-gold: #C9A227;
+  --font-voice: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+.wordmark {
+  font-family: var(--font-voice);
+  color: var(--antique-gold);
+}
+
+.bg-charcoal { background-color: var(--charcoal); }
+.text-gold { color: var(--antique-gold); }
+.btn-gold { background-color: var(--antique-gold); color: var(--charcoal); }
+.hover-gold:hover { color: var(--antique-gold); }
