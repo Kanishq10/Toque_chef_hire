@@ -1,1 +1,2 @@
 - [ ] remove chefkart pictures
+- [ ] fill with ai generated information

@@ -7,7 +7,7 @@ import {
   ScrollRestoration,
   useLocation,
 } from "react-router";
-import { AnimatePresence, motion, MotionConfig } from "framer-motion";
+import { motion, MotionConfig } from "framer-motion";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -52,41 +52,36 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 /* ─── Page-transition wrapper ─────────────────────────────────
-   Uses location.pathname as key so AnimatePresence detects the
-   route change and plays exit → enter.  mode="wait" sequences
-   them: exit finishes (120 ms) then enter springs in.          */
+   Keep the matched route mounted while it animates in.  Using
+   AnimatePresence with mode="wait" here can temporarily remove the
+   Outlet during a client-side navigation, leaving a blank route area.
+   A keyed motion element still provides an enter transition without
+   interrupting React Router's outlet update.                     */
 function PageTransition({ children }: { children: React.ReactNode }) {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <motion.div
-        key={location.pathname}
-        initial={{ opacity: 0, y: 18, scale: 0.985 }}
-        animate={{
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          transition: {
-            type: "spring",
-            mass: 1,
-            stiffness: 280,
-            damping: 28,
-          },
-        }}
-        exit={{
-          opacity: 0,
-          scale: 0.975,
-          transition: { duration: 0.13, ease: "easeIn" },
-        }}
-        style={{
-          willChange: "transform, opacity",
-          transformOrigin: "center top",
-        }}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <motion.div
+      key={location.pathname}
+      initial={{ opacity: 0, y: 18, scale: 0.985 }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+          type: "spring",
+          mass: 1,
+          stiffness: 280,
+          damping: 28,
+        },
+      }}
+      style={{
+        willChange: "transform, opacity",
+        transformOrigin: "center top",
+      }}
+    >
+      {children}
+    </motion.div>
   );
 }
 
