@@ -1,0 +1,1 @@
+- [ ] remove chefkart pictures

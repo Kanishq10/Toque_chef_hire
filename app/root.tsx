@@ -5,14 +5,16 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "react-router";
-
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 
 import type { Route } from "./+types/root";
 import "./app.css";
 
-import {NotificationBanner} from "./components/NotificationBanner";
+import { NotificationBanner } from "./components/NotificationBanner";
 import { Navbar } from "./components/NavigationBar";
+import { Footer } from "./components/Footer";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -49,12 +51,57 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
+/* ─── Page-transition wrapper ─────────────────────────────────
+   Uses location.pathname as key so AnimatePresence detects the
+   route change and plays exit → enter.  mode="wait" sequences
+   them: exit finishes (120 ms) then enter springs in.          */
+function PageTransition({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0, y: 18, scale: 0.985 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition: {
+            type: "spring",
+            mass: 1,
+            stiffness: 280,
+            damping: 28,
+          },
+        }}
+        exit={{
+          opacity: 0,
+          scale: 0.975,
+          transition: { duration: 0.13, ease: "easeIn" },
+        }}
+        style={{
+          willChange: "transform, opacity",
+          transformOrigin: "center top",
+        }}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 export default function App() {
-  return <>
-  <NotificationBanner />
-  <Navbar />
-  <Outlet />
-  </>
+  return (
+    /* MotionConfig: respects OS "reduce motion" setting automatically */
+    <MotionConfig reducedMotion="user">
+      <NotificationBanner />
+      <Navbar />
+      <PageTransition>
+        <Outlet />
+      </PageTransition>
+      <Footer />
+    </MotionConfig>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
@@ -75,8 +122,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
   return (
     <main className="pt-16 p-4 container mx-auto">
-      <h1 className="text-3xl font-bold underline" >{message}</h1>
-      {/* <p>{details}</p> */}
+      <h1 className="text-3xl font-bold underline">{message}</h1>
       {stack && (
         <pre className="w-full p-4 overflow-x-auto">
           <code>{stack}</code>

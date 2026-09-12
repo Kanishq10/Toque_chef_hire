@@ -7,4 +7,11 @@ export default defineConfig({
   resolve: {
     tsconfigPaths: true,
   },
+  optimizeDeps: {
+    include: ["react", "react-dom", "react-router", "framer-motion", "react-icons/io5", "react-icons/fa", "react-icons/tb"],
+  },
+  server: {
+    host: "0.0.0.0",
+    port: 3000,
+  },
 });

@@ -1,114 +1,168 @@
+import { Link } from "react-router";
+import { motion } from "framer-motion";
+
+const SPRING = { type: "spring", mass: 1, stiffness: 300, damping: 30 } as const;
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: SPRING },
+};
+
 export function Footer() {
-  const footerColumns = [
+  const services = [
+    { label: "Cook for a Month", href: "/cook-for-month" },
+    { label: "Chefit: One-time Cook", href: "/one-time-cook" },
+    { label: "Chef for Party", href: "/chef-for-party" },
+  ];
+
+  const company = [
+    { label: "About Us", href: "/about" },
+    { label: "Contact Us", href: "/contact" },
+    { label: "Blog", href: "/blogs" },
+    { label: "Careers", href: "/about" },
+  ];
+
+  const forCooks = [
+    { label: "Join Toque", href: "/join-chefkart" },
+    { label: "Cooks Near Me", href: "/cooks" },
+    { label: "Become a Partner", href: "/join-chefkart" },
+  ];
+
+  const columns = [
+    { title: "OUR SERVICES", links: services },
+    { title: "COMPANY", links: company },
+    { title: "FOR COOKS", links: forCooks },
+  ];
+
+  const socials = [
     {
-      title: "OUR SERVICES",
-      links: ["Cook for a Month", "Chefit: One-time Cook", "Chef for Party"],
+      label: "Facebook",
+      href: "https://facebook.com",
+      icon: (
+        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+      ),
     },
     {
-      title: "COMPANY",
-      links: ["About Us", "Blog", "Careers", "Contact Us"],
+      label: "Twitter",
+      href: "https://twitter.com",
+      icon: (
+        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+      ),
     },
     {
-      title: "FOR COOKS",
-      links: ["Toque से जुड़ें", "Cooks Near Me", "Become a Partner"],
+      label: "Instagram",
+      href: "https://instagram.com",
+      icon: (
+        <>
+          <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+          <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01" />
+        </>
+      ),
+      strokeFill: true,
+    },
+    {
+      label: "LinkedIn",
+      href: "https://linkedin.com",
+      icon: (
+        <>
+          <path
+            stroke="none"
+            d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+          />
+          <circle cx="4" cy="4" r="2" stroke="none" />
+        </>
+      ),
     },
   ];
 
   return (
-    <footer className="text-gray-600 body-font bg-charcoal">
-      <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-        <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-          <a className="flex title-font font-medium items-center md:justify-start justify-center text-white">
-            <div className="rounded-full p-0.5" style={{ backgroundColor: "white" }}>
-              <img src="/logo.svg" alt="Toque logo" className="w-8 h-8 block" />
-            </div>
-            <span className="ml-3 text-xl wordmark">Toque</span>
-          </a>
-          <p className="mt-2 text-sm text-gray-400">
-            Most trusted platform for at-home cooking services in Delhi, Gurgaon & Bangalore.
-          </p>
-        </div>
+    <footer className="bg-charcoal text-gray-400">
+      <div className="max-w-7xl mx-auto px-6 py-20">
+        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          {/* Brand */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            variants={fadeUp}
+            viewport={{ once: true }}
+          >
+            <Link to="/" className="flex items-center gap-2 mb-4">
+              <div className="rounded-full p-0.5 bg-white">
+                <img src="/logo.svg" alt="Toque logo" className="w-8 h-8 block" />
+              </div>
+              <span className="text-xl wordmark">Toque</span>
+            </Link>
+            <p className="text-sm leading-6 text-gray-400 max-w-xs">
+              India's most trusted platform for professional home-cooking
+              services — Delhi NCR, Bengaluru &amp; Mumbai.
+            </p>
 
-        <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
-          {footerColumns.map((column) => (
-            <div key={column.title} className="lg:w-1/4 md:w-1/2 w-full px-4">
-              <h2 className="title-font font-medium text-white tracking-widest text-sm mb-3">
-                {column.title}
-              </h2>
-              <nav className="list-none mb-10">
-                {column.links.map((label) => (
-                  <li key={label}>
-                    <a className="text-gray-400 hover:text-[#C9A227]">{label}</a>
+            {/* Social icons */}
+            <div className="flex gap-3 mt-6">
+              {socials.map((s) => (
+                <motion.a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="text-gray-500 transition-colors hover:text-[#C9A227]"
+                  whileTap={{ scale: 0.88 }}
+                  whileHover={{ color: "#C9A227" }}
+                >
+                  <svg
+                    fill={s.strokeFill ? "none" : "currentColor"}
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="w-5 h-5"
+                    viewBox="0 0 24 24"
+                  >
+                    {s.icon}
+                  </svg>
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Link columns */}
+          {columns.map((col, ci) => (
+            <motion.div
+              key={col.title}
+              initial="hidden"
+              whileInView="visible"
+              variants={{ ...fadeUp, visible: { ...fadeUp.visible, transition: { ...SPRING, delay: ci * 0.07 } } }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-gray-200 mb-4">
+                {col.title}
+              </h3>
+              <ul className="space-y-3">
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      to={link.href}
+                      className="text-sm text-gray-400 hover:text-[#C9A227] transition-colors"
+                    >
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
-              </nav>
-            </div>
+              </ul>
+            </motion.div>
           ))}
         </div>
       </div>
 
-      <div className="bg-[#111111]">
-        <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-          <p className="text-gray-400 text-sm text-center sm:text-left">
-            © 2026 Toque — All rights reserved
-          </p>
-          <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-            <a className="text-gray-400 hover:text-orange-400">
-              <svg
-                fill="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                className="w-5 h-5"
-                viewBox="0 0 24 24"
-              >
-                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-              </svg>
-            </a>
-            <a className="ml-3 text-gray-400 hover:text-[#C9A227]">
-              <svg
-                fill="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                className="w-5 h-5"
-                viewBox="0 0 24 24"
-              >
-                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-              </svg>
-            </a>
-            <a className="ml-3 text-gray-400 hover:text-[#C9A227]">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                className="w-5 h-5"
-                viewBox="0 0 24 24"
-              >
-                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-              </svg>
-            </a>
-            <a className="ml-3 text-gray-400 hover:text-[#C9A227]">
-              <svg
-                fill="currentColor"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="0"
-                className="w-5 h-5"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="none"
-                  d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
-                ></path>
-                <circle cx="4" cy="4" r="2" stroke="none"></circle>
-              </svg>
-            </a>
-          </span>
+      {/* Bottom bar */}
+      <div className="border-t border-white/5 bg-[#111]">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="text-xs text-gray-500">© {new Date().getFullYear()} Toque — All rights reserved</p>
+          <div className="flex items-center gap-4 text-xs">
+            <Link to="/privacy-policy" className="text-gray-500 transition-colors hover:text-[#C9A227]">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="text-gray-500 transition-colors hover:text-[#C9A227]">Terms of Service</Link>
+          </div>
         </div>
       </div>
     </footer>

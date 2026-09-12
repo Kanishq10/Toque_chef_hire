@@ -3,31 +3,119 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --color-gold: #C9A227;
+  --color-charcoal: #1C1C1C;
+  --radius-r-xs: 10px;
+  --radius-r-sm: 16px;
+  --radius-r-md: 24px;
+  --radius-r-lg: 28px;
+  --radius-r-xl: 32px;
+  --radius-r-pill: 9999px;
 }
 
+/* ── Base ── */
 html,
 body {
   margin: 0;
   width: 100%;
-  /* @apply bg-white dark:bg-gray-950;
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  } */
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;          /* elastic rubber-band on supporting browsers */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* ── Brand Tokens ── */
 :root {
   --charcoal: #1C1C1C;
   --antique-gold: #C9A227;
   --font-voice: "Playfair Display", Georgia, "Times New Roman", serif;
+
+  /* Squircle radius scale — continuous-curvature feel */
+  --r-xs:   10px;
+  --r-sm:   16px;
+  --r-md:   24px;
+  --r-lg:   28px;
+  --r-xl:   32px;
+  --r-pill: 9999px;
+
+  /* Spring-physics cubic-bezier approximations for CSS-only elements */
+  --spring:  cubic-bezier(0.34, 1.56, 0.64, 1);   /* overshoot bounce */
+  --decel:   cubic-bezier(0.25, 1,    0.5, 1);     /* smooth deceleration */
 }
 
+/* ── Brand utility classes ── */
 .wordmark {
   font-family: var(--font-voice);
   color: var(--antique-gold);
 }
-
-.bg-charcoal { background-color: var(--charcoal); }
-.text-gold { color: var(--antique-gold); }
-.btn-gold { background-color: var(--antique-gold); color: var(--charcoal); }
+.bg-charcoal   { background-color: var(--charcoal); }
+.text-gold     { color: var(--antique-gold); }
+.btn-gold      { background-color: var(--antique-gold); color: var(--charcoal); }
 .hover-gold:hover { color: var(--antique-gold); }
+
+/* ── Glassmorphism ── */
+.glass-dark {
+  background-color: rgba(28, 28, 28, 0.82);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-light {
+  background-color: rgba(255, 252, 245, 0.88);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.glass-drawer {
+  background-color: rgba(18, 18, 18, 0.92);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  border-left: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ── GPU hint for animated layers ── */
+.will-animate {
+  will-change: transform, opacity;
+}
+
+/* ── CSS-only pressed haptic (for non-Framer elements) ── */
+.pressable {
+  cursor: pointer;
+  transition: transform 60ms var(--decel);
+}
+.pressable:active { transform: scale(0.96); }
+
+/* ── Focus ring using brand gold ── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--antique-gold);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+
+/* ── Form inputs — squircle + focus spring ── */
+.field {
+  border-radius: var(--r-sm);
+  border: 1.5px solid #e5e7eb;
+  padding: 0.875rem 1rem;
+  outline: none;
+  width: 100%;
+  transition: border-color 200ms var(--decel), box-shadow 200ms var(--decel);
+}
+.field:focus {
+  border-color: var(--antique-gold);
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15);
+}
+
+/* ── Squircle class helpers ── */
+[class*="rounded-[--r-xs]"]   { border-radius: var(--r-xs) !important; }
+[class*="rounded-[--r-sm]"]   { border-radius: var(--r-sm) !important; }
+[class*="rounded-[--r-md]"]   { border-radius: var(--r-md) !important; }
+[class*="rounded-[--r-lg]"]   { border-radius: var(--r-lg) !important; }
+[class*="rounded-[--r-xl]"]   { border-radius: var(--r-xl) !important; }
+[class*="rounded-[--r-pill]"] { border-radius: var(--r-pill) !important; }
