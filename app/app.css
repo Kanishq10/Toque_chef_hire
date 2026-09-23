@@ -18,9 +18,11 @@ html,
 body {
   margin: 0;
   width: 100%;
+  min-height: 100%;
   overflow-x: hidden;
+  overflow-y: auto;
   scroll-behavior: smooth;
-  overscroll-behavior: contain;          /* elastic rubber-band on supporting browsers */
+  overscroll-behavior-y: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

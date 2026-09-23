@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion, type Transition } from 'framer-motion';
 import type { FormEvent } from 'react';
 
@@ -6,9 +7,12 @@ const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, tra
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.09 } } };
 
 export default function ChefConnection() {
-  const handleSubmit = (e: FormEvent) => {
+  const [applicationSent, setApplicationSent] = useState(false);
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert('Thank you for applying. We will contact you soon.');
+    setApplicationSent(true);
+    e.currentTarget.reset();
   };
 
   return (
@@ -254,6 +258,11 @@ export default function ChefConnection() {
               <p className="text-center text-sm text-gray-500 mt-2">
                 Our team will contact you within 48 hours of receiving your application.
               </p>
+              {applicationSent && (
+                <p className="rounded-[12px] bg-[#edf8ee] px-4 py-3 text-center text-sm text-[#286a32]" role="status">
+                  Thanks for applying. Our team will contact you within 48 hours.
+                </p>
+              )}
             </form>
           </motion.div>
         </div>
