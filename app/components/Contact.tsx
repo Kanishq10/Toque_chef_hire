@@ -200,8 +200,8 @@ const ContactUs = () => {
       style={{ backgroundColor: "#fff8ef" }}
     >
       {/* ── HERO ── */}
-      <section className="px-6 py-20 md:py-28">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
+      <section className="px-4 py-14 sm:px-6 sm:py-20 md:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 sm:gap-12 lg:grid-cols-2">
           {/* Text block — stagger children */}
           <motion.div
             variants={staggerContainer}
@@ -218,7 +218,7 @@ const ContactUs = () => {
 
             <motion.h1
               variants={fadeUp}
-              className="max-w-2xl text-5xl font-semibold leading-tight md:text-6xl"
+              className="max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl"
             >
               We're here to make
               <span style={{ color: "#c89f16" }}> cooking easier.</span>
@@ -293,7 +293,7 @@ const ContactUs = () => {
             <img loading="lazy" decoding="async"
               src="/images/toque-chefs-hero.png"
               alt="Professional Toque chefs"
-              className="h-[420px] w-full object-cover"
+              className="aspect-[16/10] w-full object-cover md:h-[420px] md:aspect-auto"
               style={{ display: "block" }}
             />
           </motion.div>
@@ -301,7 +301,7 @@ const ContactUs = () => {
       </section>
 
       {/* ── CONTACT CARDS ── */}
-      <section className="bg-white px-6 py-16">
+      <section className="bg-white px-4 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-7xl">
           <motion.div
             className="mb-10"
@@ -354,8 +354,8 @@ const ContactUs = () => {
       </section>
 
       {/* ── FORM + INFO ── */}
-      <section id="contact-form" className="px-6 py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+      <section id="contact-form" className="px-4 py-14 sm:px-6 sm:py-20">
+        <div className="mx-auto grid max-w-7xl gap-8 sm:gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           {/* Left info card */}
           <motion.div
             className="text-white"
@@ -523,7 +523,7 @@ const ContactUs = () => {
       </section>
 
       {/* ── WHY TOQUE ── */}
-      <section style={{ backgroundColor: "#f3eadf" }} className="px-6 py-20">
+      <section style={{ backgroundColor: "#f3eadf" }} className="px-4 py-14 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-7xl">
           <motion.div
             className="max-w-2xl"
@@ -573,7 +573,7 @@ const ContactUs = () => {
       </section>
 
       {/* ── LOCATION + MAP ── */}
-      <section id="location" className="px-6 py-20">
+      <section id="location" className="px-4 py-14 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-7xl">
           <motion.div
             className="mb-10"
@@ -606,7 +606,7 @@ const ContactUs = () => {
               <img loading="lazy" decoding="async"
                 src="/images/toque-chef-food.png"
                 alt="Toque chef preparing food"
-                className="h-[500px] w-full object-cover"
+                className="aspect-[16/10] w-full object-cover lg:h-[500px] lg:aspect-auto"
                 style={{ display: "block" }}
               />
             </motion.div>
@@ -623,7 +623,7 @@ const ContactUs = () => {
               whileInView={{ opacity: 1, x: 0, transition: SPRING }}
               viewport={{ once: true, margin: "-80px" }}
             >
-              <div className="flex h-[500px] flex-col justify-center p-10">
+              <div className="flex min-h-[340px] flex-col justify-center p-6 sm:p-10 lg:h-[500px]">
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c89f16]">Service areas</p>
                 <h3 className="mt-3 text-3xl font-semibold text-[#1c1c1c]">Growing city by city.</h3>
                 <ul className="mt-8 space-y-4 text-lg text-gray-600">
@@ -641,7 +641,7 @@ const ContactUs = () => {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="bg-white px-6 py-20">
+      <section className="bg-white px-4 py-14 sm:px-6 sm:py-20">
         <div className="mx-auto max-w-5xl">
           <motion.div
             className="text-center"
@@ -698,7 +698,7 @@ const ContactUs = () => {
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section className="px-6 py-16">
+      <section className="px-4 py-12 sm:px-6 sm:py-16">
         <motion.div
           className="relative mx-auto max-w-7xl overflow-hidden"
           style={{ borderRadius: "var(--r-xl)" }}
@@ -718,7 +718,7 @@ const ContactUs = () => {
           />
 
           {/* Content */}
-          <div className="relative z-10 px-6 py-20 text-center text-white md:py-24">
+          <div className="relative z-10 px-4 py-14 text-center text-white sm:px-6 sm:py-20 md:py-24">
             <p
               className="text-sm font-semibold uppercase tracking-[0.2em]"
               style={{ color: "#d5a900" }}

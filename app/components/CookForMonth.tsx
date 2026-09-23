@@ -12,9 +12,9 @@ export default function CookForMonth() {
   return (
     <div className="w-full">
       {/* 1. HERO */}
-      <section className="bg-[#fff8ef] py-20 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <motion.div 
+      <section className="bg-[#fff8ef] px-4 py-12 sm:py-20 md:px-8">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 sm:gap-12 md:grid-cols-2">
+          <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="visible"
@@ -43,16 +43,16 @@ export default function CookForMonth() {
               </a>
             </motion.div>
           </motion.div>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={SPRING}
             viewport={{ once: true }}
-            className="relative h-[400px] md:h-[500px] rounded-[--r-xl] overflow-hidden bg-gradient-to-br from-[#1C1C1C] to-gray-800"
+            className="relative aspect-[16/10] overflow-hidden rounded-[--r-xl] bg-gradient-to-br from-[#1C1C1C] to-gray-800 md:h-[500px] md:aspect-auto"
           >
-            <img loading="lazy" decoding="async" 
-              src="/images/hero-month.jpg" 
-              alt="Cook preparing meal" 
+            <img loading="lazy" decoding="async"
+              src="/images/hero-month.png"
+              alt="Cook preparing meal"
               className="w-full h-full object-cover opacity-90"
               onError={(e) => { e.currentTarget.style.display = 'none'; }}
             />
@@ -61,14 +61,14 @@ export default function CookForMonth() {
       </section>
 
       {/* 2. FEATURES */}
-      <section className="bg-white py-24 px-4 md:px-8">
+      <section className="bg-white px-4 py-14 sm:py-24 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="mb-10 text-center sm:mb-16">
             <span className="text-gold font-semibold uppercase tracking-wider text-sm">Why choose monthly</span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#1C1C1C] mt-4">Everything included, nothing hidden</h2>
           </div>
-          
-          <motion.div 
+
+          <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="visible"
@@ -83,7 +83,7 @@ export default function CookForMonth() {
               { icon: '🍱', title: 'Multi-cuisine', desc: 'North Indian, South Indian, Chinese, Continental and more' },
               { icon: '📞', title: '24/7 Support', desc: 'Dedicated support if you ever face an issue' }
             ].map((f, i) => (
-              <motion.div key={i} variants={fadeUp} whileHover={{ y: -5 }} className="bg-[#fff8ef] p-8 rounded-[--r-lg]">
+              <motion.div key={i} variants={fadeUp} whileHover={{ y: -5 }} className="rounded-[--r-lg] bg-[#fff8ef] p-6 sm:p-8">
                 <div className="text-4xl mb-4">{f.icon}</div>
                 <h3 className="text-xl font-bold text-[#1C1C1C] mb-2">{f.title}</h3>
                 <p className="text-gray-600">{f.desc}</p>
@@ -94,20 +94,20 @@ export default function CookForMonth() {
       </section>
 
       {/* 3. PRICING */}
-      <section id="pricing" className="bg-[#f3eadf] py-24 px-4 md:px-8">
+      <section id="pricing" className="bg-[#f3eadf] px-4 py-14 sm:py-24 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <motion.div 
+          <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
-            className="text-center mb-16"
+            className="mb-10 text-center sm:mb-16"
           >
             <motion.span variants={fadeUp} className="text-gold font-semibold uppercase tracking-wider text-sm">Simple Pricing</motion.span>
             <motion.h2 variants={fadeUp} className="text-3xl md:text-5xl font-bold text-[#1C1C1C] mt-2">Choose your plan</motion.h2>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="visible"
@@ -115,9 +115,9 @@ export default function CookForMonth() {
             className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center"
           >
             {/* Basic */}
-            <motion.div 
-              variants={fadeUp} 
-              whileHover={{ y: -8, scale: 1.02 }} 
+            <motion.div
+              variants={fadeUp}
+              whileHover={{ y: -8, scale: 1.02 }}
               transition={SPRING}
               className="bg-white p-8 rounded-[--r-xl] shadow-lg flex flex-col"
             >
@@ -137,9 +137,9 @@ export default function CookForMonth() {
             </motion.div>
 
             {/* Standard */}
-            <motion.div 
-              variants={fadeUp} 
-              whileHover={{ y: -8, scale: 1.02 }} 
+            <motion.div
+              variants={fadeUp}
+              whileHover={{ y: -8, scale: 1.02 }}
               transition={SPRING}
               className="bg-white p-8 rounded-[--r-xl] shadow-xl border-4 border-gold relative flex flex-col transform md:-translate-y-4"
             >
@@ -162,9 +162,9 @@ export default function CookForMonth() {
             </motion.div>
 
             {/* Premium */}
-            <motion.div 
-              variants={fadeUp} 
-              whileHover={{ y: -8, scale: 1.02 }} 
+            <motion.div
+              variants={fadeUp}
+              whileHover={{ y: -8, scale: 1.02 }}
               transition={SPRING}
               className="bg-white p-8 rounded-[--r-xl] shadow-lg flex flex-col"
             >
@@ -187,7 +187,7 @@ export default function CookForMonth() {
       </section>
 
       {/* 4. HOW IT WORKS */}
-      <HowItWorks 
+      <HowItWorks
         title="How it works"
         steps={[
           { step: 1, icon: '📱', title: 'Register on App', description: 'Download the Toque app and create your profile' },
@@ -198,12 +198,12 @@ export default function CookForMonth() {
       />
 
       {/* 5. TESTIMONIALS */}
-      <section className="bg-white py-24 px-4 md:px-8">
+      <section className="bg-white px-4 py-14 sm:py-24 md:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1C1C1C]">What our customers say</h2>
           </div>
-          <motion.div 
+          <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="visible"
@@ -225,7 +225,7 @@ export default function CookForMonth() {
       </section>
 
       {/* 6. FAQ */}
-      <ServiceFAQ 
+      <ServiceFAQ
         faqs={[
           { q: 'How quickly can I get a cook?', a: 'We typically assign a cook within 24–48 hours of booking.' },
           { q: 'Can I change my cook if needed?', a: 'Yes, you can request a cook change anytime through the app or by contacting support.' },

@@ -14,7 +14,7 @@ export default function CooksRoute() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#fff8ef] px-4 py-20 md:px-8 md:py-28">
+    <main className="min-h-screen bg-[#fff8ef] px-4 py-14 sm:py-20 md:px-8 md:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
@@ -25,7 +25,7 @@ export default function CooksRoute() {
           </div>
           <img src="/images/toque-chef-food.png" alt="Chef preparing a meal in a professional kitchen" className="h-[360px] w-full rounded-[--r-xl] object-cover shadow-xl md:h-[470px]" />
         </div>
-        <div className="mt-20 grid gap-5 md:grid-cols-3">
+        <div className="mt-12 grid gap-5 sm:mt-20 md:grid-cols-3">
           {cities.map((item) => (
             <div key={item.city} className="rounded-[--r-lg] border border-[#eadfce] bg-white p-7 shadow-sm">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#C9A227]">Available now</p>

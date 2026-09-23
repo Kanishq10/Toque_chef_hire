@@ -12,9 +12,9 @@ export default function ChefForParty() {
   return (
     <div className="w-full">
       {/* 1. HERO */}
-      <section className="bg-[#fff8ef] py-20 px-4 md:px-8 overflow-hidden">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div 
+      <section className="overflow-hidden bg-[#fff8ef] px-4 py-12 sm:py-20 md:px-8">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 sm:gap-12 lg:grid-cols-2">
+          <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="visible"
@@ -41,16 +41,16 @@ export default function ChefForParty() {
               </Link>
             </motion.div>
           </motion.div>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={SPRING}
             viewport={{ once: true }}
-            className="relative h-[400px] lg:h-[600px] rounded-[--r-xl] overflow-hidden bg-gradient-to-br from-[#1C1C1C] to-gray-800 shadow-2xl"
+            className="relative aspect-[16/10] overflow-hidden rounded-[--r-xl] bg-gradient-to-br from-[#1C1C1C] to-gray-800 shadow-2xl lg:h-[600px] lg:aspect-auto"
           >
-            <img loading="lazy" decoding="async" 
-              src="/images/hero-party.jpg" 
-              alt="Party Chef cooking" 
+            <img loading="lazy" decoding="async"
+              src="/images/hero-party.png"
+              alt="Party Chef cooking"
               className="w-full h-full object-cover opacity-90"
               onError={(e) => { e.currentTarget.style.display = 'none'; }}
             />
@@ -61,7 +61,7 @@ export default function ChefForParty() {
       {/* 2. FEATURES */}
       <section className="bg-[#1C1C1C] py-12 px-4 md:px-8 border-t border-gray-800">
         <div className="max-w-7xl mx-auto">
-          <motion.div 
+          <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="visible"
@@ -84,15 +84,15 @@ export default function ChefForParty() {
       </section>
 
       {/* 3. PRICING FACTORS */}
-      <section className="bg-white py-24 px-4 md:px-8">
+      <section className="bg-white px-4 py-14 sm:py-24 md:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <div className="mb-16">
+          <div className="mb-10 sm:mb-16">
             <span className="text-gold font-semibold uppercase tracking-wider text-sm">Our affordable prices are based on</span>
             <h2 className="text-3xl md:text-5xl font-bold text-[#1C1C1C] mt-4 mb-4">4 Pricing Factors</h2>
             <p className="text-gray-500 font-medium">Minimum prices guaranteed*</p>
           </div>
 
-          <motion.div 
+          <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="visible"
@@ -105,7 +105,7 @@ export default function ChefForParty() {
               { icon: '🌶️', title: 'Cuisine Preference' },
               { icon: '📍', title: 'Location' }
             ].map((factor, i) => (
-              <motion.div key={i} variants={fadeUp} whileHover={{ y: -5, scale: 1.05 }} transition={SPRING} className="bg-[#fff8ef] p-8 rounded-[--r-xl] flex flex-col items-center justify-center text-center shadow-sm">
+              <motion.div key={i} variants={fadeUp} whileHover={{ y: -5, scale: 1.05 }} transition={SPRING} className="flex flex-col items-center justify-center rounded-[--r-xl] bg-[#fff8ef] p-5 text-center shadow-sm sm:p-8">
                 <div className="text-4xl mb-4">{factor.icon}</div>
                 <h3 className="font-bold text-[#1C1C1C] text-lg">{factor.title}</h3>
               </motion.div>
@@ -123,7 +123,7 @@ export default function ChefForParty() {
       </section>
 
       {/* 4. HOW IT WORKS */}
-      <HowItWorks 
+      <HowItWorks
         title="How it works"
         dark={true}
         steps={[
@@ -135,14 +135,14 @@ export default function ChefForParty() {
       />
 
       {/* 5. GALLERY PLACEHOLDER */}
-      <section className="bg-[#f3eadf] py-24 px-4 md:px-8 overflow-hidden">
+      <section className="overflow-hidden bg-[#f3eadf] px-4 py-14 sm:py-24 md:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-gold font-semibold uppercase tracking-wider text-sm">Gallery</span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#1C1C1C] mt-4">Dishes from our party chefs</h2>
           </div>
-          
-          <motion.div 
+
+          <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="visible"
@@ -150,10 +150,10 @@ export default function ChefForParty() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {[1, 2, 3, 4].map((item) => (
-              <motion.div 
-                key={item} 
-                variants={fadeUp} 
-                whileHover={{ scale: 1.03 }} 
+              <motion.div
+                key={item}
+                variants={fadeUp}
+                whileHover={{ scale: 1.03 }}
                 transition={SPRING}
                 className="aspect-[3/2] rounded-[--r-xl] bg-gradient-to-br from-gray-300 to-gray-400 shadow-md relative overflow-hidden"
               >
@@ -165,9 +165,9 @@ export default function ChefForParty() {
       </section>
 
       {/* 6. TESTIMONIALS */}
-      <section className="bg-white py-24 px-4 md:px-8">
+      <section className="bg-white px-4 py-14 sm:py-24 md:px-8">
         <div className="max-w-5xl mx-auto">
-          <motion.div 
+          <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="visible"
@@ -189,7 +189,7 @@ export default function ChefForParty() {
       </section>
 
       {/* 7. FAQ */}
-      <ServiceFAQ 
+      <ServiceFAQ
         faqs={[
           { q: 'How far in advance should I book?', a: 'We recommend booking at least 48 hours in advance, though we can accommodate last-minute requests based on availability.' },
           { q: 'Can the chef bring their own equipment?', a: 'Yes, chefs come with basic cooking equipment. Please inform us if you need anything specific.' },

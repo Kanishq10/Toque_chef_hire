@@ -28,7 +28,7 @@ export function buildMeta({
   title,
   description,
   path,
-  image = "/images/hero-home.jpg",
+  image = "/images/hero-home.png",
   robots = "index, follow",
 }: MetaInput) {
   const url = new URL(path, site.url).toString();

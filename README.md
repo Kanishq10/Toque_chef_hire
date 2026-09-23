@@ -140,16 +140,16 @@ This platform utilizes **React Router v8**. The routing registry is in `app/rout
 
 ## 🔌 Backend Integration Points
 
-The frontend is currently a static SPA. When you begin backend work, wire up these specific files:
+The app uses React Router Framework Mode with server-side rendering. The forms currently do not send submissions; connect them to a backend before accepting customer or cook leads:
 
 1. **Customer Inquiries**
    - **File**: `app/components/Contact.tsx`
-   - **Action**: Locate the `handleSubmit` function.
+   - **Action**: Replace the local success state with a real submission request.
    - **Endpoint**: Implement a `POST /api/contact` fetch call here.
 
 2. **Chef Applications**
    - **File**: `app/components/ChefConnection.tsx`
-   - **Action**: Locate the `handleSubmit` function.
+   - **Action**: Replace the browser alert with a real submission request.
    - **Endpoint**: Implement a `POST /api/cook-application` fetch call here.
 
 3. **Booking Flow**
@@ -158,42 +158,9 @@ The frontend is currently a static SPA. When you begin backend work, wire up the
 
 ---
 
-## 🖼️ AI Image Generation Guide (Checklist)
+## 🖼️ Images
 
-Since there are no current images, generate them using an AI tool (like Midjourney or Gemini) and save them to the exact paths listed below. The UI is built to automatically display them once they exist in the folder.
-
-### Core Hero Images (1920x1080)
-- [ ] `public/images/hero-home.jpg`
-  > **Prompt**: Cinematic wide shot of an Indian professional chef in a modern white kitchen, wearing crisp white chef uniform and toque hat, plating an elegant dish. Warm ambient lighting, shallow depth of field. Premium food photography.
-- [ ] `public/images/hero-about.jpg`
-  > **Prompt**: Aerial view of a vibrant Indian city skyline at golden hour, warm sunset tones. Premium lifestyle feel, tilt-shift effect.
-- [ ] `public/images/hero-month.jpg`
-  > **Prompt**: An Indian home cook in neat uniform preparing wholesome dal-roti in a clean modern kitchen. Warm morning light, domestic and trustworthy vibe.
-- [ ] `public/images/hero-onetime.jpg`
-  > **Prompt**: Top-down flat lay of a fresh cook kit arriving at an apartment door with ingredients neatly arranged. Urban, minimal, gold and white palette.
-- [ ] `public/images/hero-party.jpg`
-  > **Prompt**: Elegant Indian house party scene. A professional chef in white uniform cooking at a live counter surrounded by happy guests. String lights, warm bokeh, festive atmosphere.
-- [ ] `public/images/hero-join.jpg`
-  > **Prompt**: Young Indian man and woman in chef uniforms smiling confidently in a bright commercial kitchen. Empowered, professional, aspirational.
-
-### Secondary UI Images (1200x900)
-- [ ] `public/images/cook-preparing.jpg`
-  > **Prompt**: Close-up of Indian chef hands expertly chopping vegetables on a wooden board. Shallow depth of field, warm cinematic lighting.
-- [ ] `public/images/food-spread.jpg`
-  > **Prompt**: Overhead flat-lay of beautiful Indian thali with dal, sabzi, roti, rice, raita. Premium styling on dark slate with gold cutlery.
-- [ ] `public/images/party-spread.jpg`
-  > **Prompt**: Long dining table set for elegant house party with multiple Indian dishes, candles, flowers. Warm evening light.
-- [ ] `public/images/app-mockup.png` *(Use a transparent background if possible)*
-  > **Prompt**: Sleek smartphone mockup showing a fictional cook-booking app UI with gold and charcoal color scheme. Minimal, clean, iOS-style.
-
-### Horizontal Gallery (1200x800 each)
-Used on the Home page scrolling section. Ensure they look appetizing!
-- [ ] `public/images/food-1.jpg` -> **Prompt**: Beautiful overhead shot of Butter Chicken in a copper bowl, warm lighting, wooden table.
-- [ ] `public/images/food-2.jpg` -> **Prompt**: Beautiful overhead shot of Hyderabadi Biryani in a handi, warm lighting, wooden table.
-- [ ] `public/images/food-3.jpg` -> **Prompt**: Beautiful overhead shot of crisp Masala Dosa with chutneys, warm lighting, wooden table.
-- [ ] `public/images/food-4.jpg` -> **Prompt**: Beautiful overhead shot of Paneer Tikka sizzling on a platter, warm lighting, wooden table.
-- [ ] `public/images/food-5.jpg` -> **Prompt**: Beautiful overhead shot of Gulab Jamun dessert in a small bowl, warm lighting, wooden table.
-- [ ] `public/images/food-6.jpg` -> **Prompt**: Beautiful overhead shot of Rajma Chawal, warm lighting, domestic feel, wooden table.
+Site images are stored in `public/images/` as PNG files. The active photo assets have a restrained contemporary Indian miniature-painting treatment in warm ivory, antique gold, charcoal, saffron, and leaf green. The home gallery uses `food-1.png` through `food-6.png`; shared hero, food, and spread images use the same style. The one-time cook page reuses `toque-chefs-hero.png` because there is no separate one-time hero asset yet. `toque-cta-background.png` is an unused legacy banner with text baked into the image.
 
 ---
 

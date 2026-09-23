@@ -12,10 +12,10 @@ export default function ChefConnection() {
   };
 
   return (
-    <div className="min-h-screen pt-24 font-sans text-[#1C1C1C]">
+    <div className="min-h-screen pt-16 font-sans text-[#1C1C1C] sm:pt-24">
       {/* 1. HERO */}
-      <section className="bg-[#fff8ef] py-20 px-4">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+      <section className="bg-[#fff8ef] px-4 py-12 sm:py-20">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 sm:gap-12 lg:grid-cols-2">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -55,15 +55,15 @@ export default function ChefConnection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={SPRING}
-            className="h-[500px] rounded-[32px] overflow-hidden bg-gradient-to-tr from-[#C9A227] to-[#1C1C1C] relative shadow-2xl"
+            className="relative aspect-[16/10] overflow-hidden rounded-[32px] bg-gradient-to-tr from-[#C9A227] to-[#1C1C1C] shadow-2xl lg:h-[500px] lg:aspect-auto"
           >
-            <img loading="lazy" decoding="async" src="/images/hero-join.jpg" alt="Join Toque" className="w-full h-full object-cover mix-blend-overlay opacity-80" />
+            <img loading="lazy" decoding="async" src="/images/hero-join.png" alt="Join Toque" className="w-full h-full object-cover mix-blend-overlay opacity-80" />
           </motion.div>
         </div>
       </section>
 
       {/* 2. BENEFITS */}
-      <section className="bg-white py-24 px-4">
+      <section className="bg-white px-4 py-14 sm:py-24">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
@@ -106,7 +106,7 @@ export default function ChefConnection() {
       </section>
 
       {/* 3. HOW TO JOIN */}
-      <section className="bg-[#f3eadf] py-24 px-4">
+      <section className="bg-[#f3eadf] px-4 py-14 sm:py-24">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
@@ -146,7 +146,7 @@ export default function ChefConnection() {
       </section>
 
       {/* 4. STATS */}
-      <section className="bg-[#1C1C1C] text-white py-20 px-4">
+      <section className="bg-[#1C1C1C] px-4 py-14 text-white sm:py-20">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
@@ -171,7 +171,7 @@ export default function ChefConnection() {
       </section>
 
       {/* 5. APPLICATION FORM */}
-      <section id="apply-form" className="bg-white py-24 px-4 scroll-mt-20">
+      <section id="apply-form" className="scroll-mt-20 bg-white px-4 py-14 sm:py-24">
         <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -260,7 +260,7 @@ export default function ChefConnection() {
       </section>
 
       {/* 6. TESTIMONIALS */}
-      <section className="bg-[#f3eadf] py-24 px-4">
+      <section className="bg-[#f3eadf] px-4 py-14 sm:py-24">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial="hidden"

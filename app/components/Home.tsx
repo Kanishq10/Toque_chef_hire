@@ -69,9 +69,9 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* 1. HERO */}
-      <section className="relative overflow-hidden bg-[#1C1C1C] px-4 py-16 text-white md:py-24">
+      <section className="relative overflow-hidden bg-[#1C1C1C] px-4 py-10 text-white sm:py-16 md:py-24">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_50%,rgba(201,162,39,0.2),transparent_38%)]" />
-        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-8 sm:gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <motion.div
             className="max-w-2xl"
             variants={stagger}
@@ -81,10 +81,10 @@ export default function Home() {
             <motion.div variants={fadeUp} className="mb-6 inline-flex items-center gap-2 rounded-[--r-pill] bg-[#C9A227] px-4 py-1.5 text-sm font-semibold text-black">
               <span aria-hidden="true">🍽️</span> Delhi NCR · Bengaluru · Mumbai
             </motion.div>
-            <motion.h1 variants={fadeUp} className="mb-6 text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
+            <motion.h1 variants={fadeUp} className="mb-5 text-3xl font-bold leading-[1.08] tracking-tight sm:text-4xl md:text-6xl">
               Professional home-chefs cook fresh meals in your kitchen
             </motion.h1>
-            <motion.p variants={fadeUp} className="mb-10 max-w-xl text-lg leading-8 text-white/70 md:text-xl">
+            <motion.p variants={fadeUp} className="mb-7 max-w-xl text-base leading-7 text-white/70 sm:mb-10 sm:text-lg sm:leading-8 md:text-xl">
               Trusted, trained cooks for everyday meals, one-time help, and celebrations at home.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-col gap-4 sm:flex-row">
@@ -110,7 +110,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            className="relative min-h-[340px] overflow-hidden rounded-[--r-xl] border border-white/10 bg-[#302719] shadow-2xl lg:min-h-[520px]"
+            className="relative aspect-[16/10] overflow-hidden rounded-[--r-xl] border border-white/10 bg-[#302719] shadow-2xl lg:min-h-[520px] lg:aspect-auto"
             initial={{ opacity: 0, x: 24, scale: 0.97 }}
             animate={{ opacity: 1, x: 0, scale: 1, transition: { ...SPRING, delay: 0.12 } }}
           >
@@ -120,7 +120,7 @@ export default function Home() {
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-            <p className="absolute bottom-5 left-5 text-sm font-semibold uppercase tracking-[0.18em] text-white/80">
+            <p className="absolute bottom-4 left-4 right-4 text-xs font-semibold uppercase leading-5 tracking-[0.14em] text-white/80 sm:bottom-5 sm:left-5 sm:text-sm sm:tracking-[0.18em]">
               Real cooks. Real homes. Real happy tables.
             </p>
           </motion.div>
@@ -128,14 +128,14 @@ export default function Home() {
       </section>
 
       {/* 2. SERVICES SECTION */}
-      <section id="services" className="py-24 px-4 bg-white">
+      <section id="services" className="bg-white px-4 py-14 sm:py-24">
         <div className="max-w-6xl mx-auto">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={stagger}
-            className="text-center mb-16"
+            className="mb-10 text-center sm:mb-16"
           >
             <motion.span variants={fadeUp} className="text-[#C9A227] font-semibold uppercase tracking-wider text-sm mb-2 block">
               Our Services
@@ -145,7 +145,7 @@ export default function Home() {
             </motion.h2>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -153,12 +153,12 @@ export default function Home() {
             className="grid grid-cols-1 md:grid-cols-2 gap-6"
           >
             {/* Service A */}
-            <motion.div variants={fadeUp} whileHover={{ y: -6, scale: 1.015, transition: SPRING }} whileTap={{ scale: 0.96 }} className="bg-[#fff8ef] p-8 rounded-[--r-md] shadow-sm flex flex-col justify-between">
+            <motion.div variants={fadeUp} whileHover={{ y: -6, scale: 1.015, transition: SPRING }} whileTap={{ scale: 0.96 }} className="flex flex-col justify-between rounded-[--r-md] bg-[#fff8ef] p-6 shadow-sm sm:p-8">
               <div>
                 <div className="text-4xl mb-4">🎉</div>
                 <h3 className="text-2xl font-bold text-[#1C1C1C] mb-2">Chef for Party</h3>
                 <p className="text-xl font-semibold text-[#C9A227] mb-4">₹2,000/visit</p>
-                <p className="text-gray-600 mb-8">Multi-cuisine · Customisable · Bartenders available</p>
+                <p className="mb-6 text-gray-600 sm:mb-8">Multi-cuisine · Customisable · Bartenders available</p>
               </div>
               <Link to="/chef-for-party" className="block text-center bg-[#C9A227] text-black py-3 rounded-[--r-pill] font-semibold hover:bg-[#b58f20] transition-colors">
                 Book Now
@@ -166,12 +166,12 @@ export default function Home() {
             </motion.div>
 
             {/* Service B */}
-            <motion.div variants={fadeUp} whileHover={{ y: -6, scale: 1.015, transition: SPRING }} whileTap={{ scale: 0.96 }} className="bg-[#fff8ef] p-8 rounded-[--r-md] shadow-sm flex flex-col justify-between">
+            <motion.div variants={fadeUp} whileHover={{ y: -6, scale: 1.015, transition: SPRING }} whileTap={{ scale: 0.96 }} className="flex flex-col justify-between rounded-[--r-md] bg-[#fff8ef] p-6 shadow-sm sm:p-8">
               <div>
                 <div className="text-4xl mb-4">🍳</div>
                 <h3 className="text-2xl font-bold text-[#1C1C1C] mb-2">Cook for Month</h3>
                 <p className="text-xl font-semibold text-[#C9A227] mb-4">₹8,000/month</p>
-                <p className="text-gray-600 mb-8">Background verified · Hygiene-certified · Flexible timings</p>
+                <p className="mb-6 text-gray-600 sm:mb-8">Background verified · Hygiene-certified · Flexible timings</p>
               </div>
               <Link to="/cook-for-month" className="block text-center border-2 border-[#1C1C1C] text-[#1C1C1C] py-3 rounded-[--r-pill] font-semibold hover:bg-[#1C1C1C] hover:text-white transition-colors">
                 Learn More
@@ -179,12 +179,12 @@ export default function Home() {
             </motion.div>
 
             {/* Service C */}
-            <motion.div variants={fadeUp} whileHover={{ y: -6, scale: 1.015, transition: SPRING }} whileTap={{ scale: 0.96 }} className="bg-[#fff8ef] p-8 rounded-[--r-md] shadow-sm flex flex-col justify-between">
+            <motion.div variants={fadeUp} whileHover={{ y: -6, scale: 1.015, transition: SPRING }} whileTap={{ scale: 0.96 }} className="flex flex-col justify-between rounded-[--r-md] bg-[#fff8ef] p-6 shadow-sm sm:p-8">
               <div>
                 <div className="text-4xl mb-4">⚡</div>
                 <h3 className="text-2xl font-bold text-[#1C1C1C] mb-2">Chefit: One-time Cook</h3>
                 <p className="text-xl font-semibold text-[#C9A227] mb-4">₹499/session</p>
-                <p className="text-gray-600 mb-8">Arrives in ~10 min · On-demand · Gurugram only</p>
+                <p className="mb-6 text-gray-600 sm:mb-8">Arrives in ~10 min · On-demand · Gurugram only</p>
               </div>
               <Link to="/one-time-cook" className="block text-center border-2 border-[#1C1C1C] text-[#1C1C1C] py-3 rounded-[--r-pill] font-semibold hover:bg-[#1C1C1C] hover:text-white transition-colors">
                 Learn More
@@ -192,12 +192,12 @@ export default function Home() {
             </motion.div>
 
             {/* Service D */}
-            <motion.div variants={fadeUp} whileHover={{ y: -6, scale: 1.015, transition: SPRING }} whileTap={{ scale: 0.96 }} className="bg-[#1C1C1C] text-white p-8 rounded-[--r-md] shadow-sm flex flex-col justify-between">
+            <motion.div variants={fadeUp} whileHover={{ y: -6, scale: 1.015, transition: SPRING }} whileTap={{ scale: 0.96 }} className="flex flex-col justify-between rounded-[--r-md] bg-[#1C1C1C] p-6 text-white shadow-sm sm:p-8">
               <div>
                 <div className="text-4xl mb-4">👨‍🍳</div>
                 <h3 className="text-2xl font-bold text-[#C9A227] mb-2">Join as Cook</h3>
                 <p className="text-xl font-semibold mb-4">Earn ₹15k–₹40k/month</p>
-                <p className="text-gray-400 mb-8">Flexible hours · Training provided</p>
+                <p className="mb-6 text-gray-400 sm:mb-8">Flexible hours · Training provided</p>
               </div>
               <Link to="/join-chefkart" className="block text-center bg-white text-[#1C1C1C] py-3 rounded-[--r-pill] font-semibold hover:bg-gray-200 transition-colors">
                 Apply Now
@@ -208,16 +208,16 @@ export default function Home() {
       </section>
 
       {/* 3. WHY CHOOSE US */}
-      <section className="bg-[#fff8ef] px-4 py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+      <section className="bg-[#fff8ef] px-4 py-14 sm:py-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 sm:gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <motion.div
-            className="relative min-h-[360px] overflow-hidden rounded-[--r-xl] bg-[#2d2416] shadow-xl lg:min-h-[470px]"
+            className="relative aspect-[16/10] overflow-hidden rounded-[--r-xl] bg-[#2d2416] shadow-xl lg:min-h-[470px] lg:aspect-auto"
             initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1, transition: SPRING }}
             viewport={{ once: true, margin: "-80px" }}
           >
             <img
-              src="/image.png"
+              src="/images/toque-chefs-hero.png"
               alt="A Toque cook and a freshly prepared meal"
               className="h-full w-full object-cover"
               loading="lazy"
@@ -266,14 +266,14 @@ export default function Home() {
       </section>
 
       {/* 4. STATS */}
-      <section className="bg-[#1C1C1C] py-16 px-4">
+      <section className="bg-[#1C1C1C] px-4 py-12 sm:py-16">
         <div className="max-w-6xl mx-auto">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={stagger}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+            className="grid grid-cols-2 gap-6 text-center md:grid-cols-4 md:gap-8"
           >
             {[
               { label: 'Customers', value: '50,000+' },
@@ -293,14 +293,14 @@ export default function Home() {
       </section>
 
       {/* 5. TESTIMONIALS */}
-      <section className="py-24 px-4 bg-white">
+      <section className="bg-white px-4 py-14 sm:py-24">
         <div className="max-w-6xl mx-auto">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
             variants={stagger}
-            className="text-center mb-16"
+            className="mb-10 text-center sm:mb-16"
           >
             <motion.span variants={fadeUp} className="text-[#C9A227] font-semibold uppercase tracking-wider text-sm mb-2 block">
               What our customers say
@@ -309,8 +309,8 @@ export default function Home() {
               Real stories from real kitchens
             </motion.h2>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -322,10 +322,10 @@ export default function Home() {
               { author: 'Rahul S., Bangalore', text: 'Used the Chef for Party service for my wife\'s birthday. The chef was professional, food was delicious, and cleanup was spotless.' },
               { author: 'Ananya K., Gurgaon', text: 'Chefit arrived within 10 minutes. Perfect for days when I need a quick meal solution. Highly recommended!' }
             ].map((t, i) => (
-              <motion.div 
-                key={i} 
-                variants={fadeUp} 
-                className="bg-white p-8 rounded-[--r-lg] shadow-md border-t-[3px] border-[#C9A227]"
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                className="rounded-[--r-lg] border-t-[3px] border-[#C9A227] bg-white p-6 shadow-md sm:p-8"
               >
                 <div className="text-[#C9A227] mb-4 text-xl">★★★★★</div>
                 <p className="text-gray-700 mb-6 italic">"{t.text}"</p>
@@ -340,9 +340,9 @@ export default function Home() {
       <AppDownloadCTA />
 
       {/* 7. FOOD GALLERY */}
-      <section className="py-24 bg-[#f3eadf] overflow-hidden">
+      <section className="overflow-hidden bg-[#f3eadf] py-14 sm:py-24">
         <div className="max-w-6xl mx-auto px-4 mb-10">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -350,7 +350,7 @@ export default function Home() {
           >
             Our Food
           </motion.span>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -359,21 +359,21 @@ export default function Home() {
             Freshly cooked in your kitchen
           </motion.h2>
         </div>
-        
+
         <div className="relative">
           {/* Gradient masks for smooth edges */}
           <div className="absolute top-0 bottom-0 left-0 w-16 bg-gradient-to-r from-[#f3eadf] to-transparent z-10 pointer-events-none" />
           <div className="absolute top-0 bottom-0 right-0 w-16 bg-gradient-to-l from-[#f3eadf] to-transparent z-10 pointer-events-none" />
-          
+
           <div className="flex gap-4 overflow-x-auto pb-8 px-4 md:px-16 no-scrollbar" style={{ scrollSnapType: 'x mandatory' }}>
             {[1, 2, 3, 4, 5, 6].map((num) => (
-              <motion.div 
+              <motion.div
                 key={num}
                 whileHover={{ scale: 1.05 }}
-                className="flex-shrink-0 h-64 w-80 rounded-[--r-lg] overflow-hidden bg-gradient-to-br from-[#1C1C1C] to-[#2d2416] snap-center"
+                className="w-[82vw] max-w-80 flex-shrink-0 aspect-[3/2] overflow-hidden rounded-[--r-lg] bg-gradient-to-br from-[#1C1C1C] to-[#2d2416] snap-center"
               >
-                <img loading="lazy" decoding="async" 
-                  src={`/images/food-${num}.jpg`} 
+                <img loading="lazy" decoding="async"
+                  src={`/images/food-${num}.png`}
                   alt={`Fresh food example ${num}`}
                   className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
                   onError={(e) => {

@@ -64,7 +64,7 @@ export function ServiceFAQ({ faqs, title = "Frequently asked questions" }: Props
   const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: SPRING } };
 
   return (
-    <section className="bg-white px-6 py-20">
+    <section className="bg-white px-4 py-14 sm:px-6 sm:py-20">
       <div className="mx-auto max-w-4xl">
         <motion.div
           className="text-center mb-12"

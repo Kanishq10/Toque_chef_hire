@@ -20,7 +20,7 @@ interface Props {
 export function HowItWorks({ steps, title = "How it works", dark = false }: Props) {
   return (
     <section
-      className="px-6 py-20"
+      className="px-4 py-14 sm:px-6 sm:py-20"
       style={{ backgroundColor: dark ? "#1c1c1c" : "#fff" }}
     >
       <div className="mx-auto max-w-7xl">

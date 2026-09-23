@@ -18,10 +18,29 @@ html,
 body {
   margin: 0;
   width: 100%;
+  overflow-x: hidden;
   scroll-behavior: smooth;
   overscroll-behavior: contain;          /* elastic rubber-band on supporting browsers */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Compact touch layouts ── */
+@media (max-width: 639px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
 }
 
 /* ── Brand Tokens ── */

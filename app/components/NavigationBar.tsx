@@ -83,7 +83,7 @@ export function Navbar() {
           borderBottom: "1px solid rgba(255,255,255,0.07)",
         } as React.CSSProperties}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
 
           {/* Logo */}
           <motion.div whileTap={{ scale: 0.93 }} style={{ display: "inline-flex" }}>
@@ -211,14 +211,14 @@ export function Navbar() {
 
             {/* Panel */}
             <motion.div
-              className="absolute top-0 right-0 h-full w-[82vw] max-w-sm flex flex-col glass-drawer will-animate"
+              className="absolute top-0 right-0 flex h-full w-[88vw] max-w-sm flex-col glass-drawer will-animate"
               variants={drawerVariants}
               initial="hidden"
               animate="visible"
               exit="exit"
             >
               {/* Header */}
-              <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+              <div className="flex items-center justify-between px-4 py-3 sm:px-6 sm:py-4" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
                 <motion.div whileTap={{ scale: 0.93 }}>
                   <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2">
                     <div className="rounded-full p-0.5 bg-white">
@@ -292,7 +292,7 @@ export function Navbar() {
               </nav>
 
               {/* Footer CTA */}
-              <div className="px-6 py-6" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+              <div className="px-4 py-4 sm:px-6 sm:py-6" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.94 }}>
                   <Link
                     to="/contact"

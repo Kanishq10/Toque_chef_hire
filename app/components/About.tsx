@@ -9,9 +9,9 @@ export default function About() {
   return (
     <main className="min-h-screen">
       {/* 1. HERO - Split layout */}
-      <section className="flex flex-col md:flex-row min-h-[600px] h-screen bg-[#fff8ef]">
-        <div className="flex-1 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16 md:py-0">
-          <motion.div 
+      <section className="flex min-h-[600px] flex-col bg-[#fff8ef] md:h-screen md:flex-row">
+        <div className="flex flex-1 flex-col justify-center px-4 py-12 sm:px-8 sm:py-16 md:px-16 md:py-0 lg:px-24">
+          <motion.div
             variants={stagger}
             initial="hidden"
             animate="visible"
@@ -27,8 +27,8 @@ export default function About() {
               Toque was born from a simple observation: urban Indians struggle to eat well every day. We built a platform that connects trained, verified cooking professionals with households that want fresh, home-cooked meals without the hassle of managing a full-time cook.
             </motion.p>
             <motion.div variants={fadeUp}>
-              <Link 
-                to="/join-chefkart" 
+              <Link
+                to="/join-chefkart"
                 className="inline-block bg-[#C9A227] text-black px-8 py-3 rounded-[--r-pill] font-semibold text-lg hover:bg-[#b58f20] transition-colors"
               >
                 Join Toque
@@ -36,17 +36,17 @@ export default function About() {
             </motion.div>
           </motion.div>
         </div>
-        <div className="flex-1 relative min-h-[300px] md:min-h-full">
-          <div 
+        <div className="relative aspect-[16/10] min-h-[220px] flex-1 sm:min-h-[300px] md:min-h-full md:aspect-auto">
+          <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ 
-              backgroundImage: 'url(/images/hero-about.jpg)',
+            style={{
+              backgroundImage: 'url(/images/hero-about.png)',
               backgroundColor: '#1C1C1C'
             }}
           />
-          <img loading="lazy" decoding="async" 
-            src="/images/hero-about.jpg" 
-            alt="About Toque" 
+          <img loading="lazy" decoding="async"
+            src="/images/hero-about.png"
+            alt="About Toque"
             className="absolute inset-0 w-full h-full object-cover"
             onError={(e) => {
               (e.target as HTMLElement).style.display = 'none';
@@ -56,9 +56,9 @@ export default function About() {
       </section>
 
       {/* 2. MISSION */}
-      <section className="py-24 px-4 bg-[#1C1C1C] text-white">
+      <section className="bg-[#1C1C1C] px-4 py-14 text-white sm:py-24">
         <div className="max-w-5xl mx-auto">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -73,7 +73,7 @@ export default function About() {
             </motion.h2>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -85,10 +85,10 @@ export default function About() {
               { icon: '🏆', title: 'Quality', text: 'Regular training, hygiene audits and customer feedback loops' },
               { icon: '❤️', title: 'Care', text: 'We treat every household as our own and every cook as family' }
             ].map((value, i) => (
-              <motion.div 
-                key={i} 
-                variants={fadeUp} 
-                whileHover={{ y: -6, scale: 1.015, transition: SPRING }} 
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                whileHover={{ y: -6, scale: 1.015, transition: SPRING }}
                 className="bg-[#2d2416] p-8 rounded-[--r-md] text-center"
               >
                 <div className="text-4xl mb-4">{value.icon}</div>
@@ -101,9 +101,9 @@ export default function About() {
       </section>
 
       {/* 3. CITIES */}
-      <section className="py-24 px-4 bg-white">
+      <section className="bg-white px-4 py-14 sm:py-24">
         <div className="max-w-4xl mx-auto text-center">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -118,8 +118,8 @@ export default function About() {
 
             <motion.div variants={stagger} className="flex flex-wrap justify-center gap-4">
               {['Delhi', 'Gurgaon', 'Noida', 'Greater Noida', 'Ghaziabad', 'Faridabad', 'Bengaluru', 'Mumbai'].map((city, i) => (
-                <motion.div 
-                  key={i} 
+                <motion.div
+                  key={i}
                   variants={fadeUp}
                   whileHover={{ scale: 1.05, backgroundColor: '#C9A227', color: '#1C1C1C' }}
                   className="px-6 py-3 border-2 border-[#C9A227] text-[#1C1C1C] rounded-[--r-pill] font-semibold text-lg cursor-default transition-colors duration-300"
@@ -133,9 +133,9 @@ export default function About() {
       </section>
 
       {/* 4. NUMBERS */}
-      <section className="py-20 px-4 bg-[#C9A227]">
+      <section className="bg-[#C9A227] px-4 py-14 sm:py-20">
         <div className="max-w-6xl mx-auto">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
@@ -160,17 +160,17 @@ export default function About() {
       </section>
 
       {/* 5. CTA */}
-      <section className="relative py-24 px-4 text-center">
-        <div 
+      <section className="relative px-4 py-14 text-center sm:py-24">
+        <div
           className="absolute inset-0 z-0 bg-cover bg-center"
-          style={{ 
+          style={{
             backgroundImage: 'linear-gradient(90deg, rgba(28,28,28,0.86), rgba(28,28,28,0.42)), url(/images/toque-chef-food.png)',
             backgroundColor: '#1C1C1C'
           }}
         />
         <div className="absolute inset-0 z-10 bg-black/60" />
         <div className="relative z-20 max-w-2xl mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -178,13 +178,13 @@ export default function About() {
           >
             Start cooking better today
           </motion.h2>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
           >
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               className="inline-block bg-[#C9A227] text-black px-10 py-4 rounded-[--r-pill] font-bold text-lg hover:bg-[#b58f20] transition-colors"
             >
               Contact Us

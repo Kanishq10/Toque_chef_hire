@@ -25,7 +25,7 @@ export function AppDownloadCTA({
   return (
     <section
       id="app-download"
-      className="overflow-hidden px-6 py-20"
+      className="overflow-hidden px-4 py-14 sm:px-6 sm:py-20"
       style={{ backgroundColor: "#1c1c1c" }}
     >
       <div className="mx-auto max-w-7xl">
@@ -39,7 +39,7 @@ export function AppDownloadCTA({
             <p className="text-sm font-semibold uppercase tracking-[0.22em] mb-4" style={{ color: "#C9A227" }}>
               {eyebrow}
             </p>
-            <h2 className="text-4xl font-semibold text-white leading-tight md:text-5xl">
+            <h2 className="text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-5xl">
               {headline}
             </h2>
             <p className="mt-5 text-lg leading-8 text-gray-400 max-w-lg">
@@ -48,12 +48,12 @@ export function AppDownloadCTA({
 
             {/* Store badges */}
             {showBadges && (
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap sm:gap-4">
                 <motion.a
                   href="https://apps.apple.com/in/"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-3 px-5 py-3 text-white"
+                  className="flex items-center gap-3 px-5 py-3 text-white sm:w-auto"
                   style={{
                     backgroundColor: "rgba(255,255,255,0.08)",
                     borderRadius: "var(--r-md)",
@@ -75,7 +75,7 @@ export function AppDownloadCTA({
                   href="https://play.google.com/store"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-3 px-5 py-3 text-white"
+                  className="flex items-center gap-3 px-5 py-3 text-white sm:w-auto"
                   style={{
                     backgroundColor: "rgba(255,255,255,0.08)",
                     borderRadius: "var(--r-md)",
@@ -115,7 +115,7 @@ export function AppDownloadCTA({
             viewport={{ once: true, margin: "-80px" }}
           >
             <div
-              className="w-64 h-[28rem] flex items-center justify-center"
+              className="flex aspect-[3/4] w-full max-w-64 items-center justify-center sm:h-[28rem] sm:w-64 sm:aspect-auto"
               style={{
                 backgroundColor: "rgba(255,255,255,0.04)",
                 borderRadius: "var(--r-xl)",
@@ -139,4 +139,3 @@ export function AppDownloadCTA({
 }
 
 export default AppDownloadCTA;
-

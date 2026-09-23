@@ -17,6 +17,7 @@ import { Navbar } from "./components/NavigationBar";
 import { Footer } from "./components/Footer";
 
 export const links: Route.LinksFunction = () => [
+  { rel: "icon", href: "/logo.svg", type: "image/svg+xml" },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",

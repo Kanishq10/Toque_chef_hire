@@ -12,7 +12,7 @@ export default function OneTimeCook() {
   return (
     <div className="w-full">
       {/* 1. HERO */}
-      <section className="bg-[#1C1C1C] relative py-24 px-4 md:px-8 overflow-hidden flex flex-col items-center text-center">
+      <section className="relative flex flex-col items-center overflow-hidden bg-[#1C1C1C] px-4 py-14 text-center sm:py-24 md:px-8">
         {/* Subtle gold gradient blob */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#C9A227]/10 blur-[120px] rounded-full pointer-events-none" />
         
@@ -22,7 +22,7 @@ export default function OneTimeCook() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="flex flex-col items-center space-y-8"
+            className="flex flex-col items-center space-y-6 sm:space-y-8"
           >
             <motion.div variants={fadeUp} className="inline-flex items-center px-4 py-2 bg-gold/20 text-gold rounded-full border border-gold/30">
               <span className="font-medium">⚡ Available in Gurugram</span>
@@ -51,17 +51,17 @@ export default function OneTimeCook() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ ...SPRING, delay: 0.3 }}
-            className="mt-16 w-full max-w-4xl h-64 md:h-[400px] rounded-[--r-xl] overflow-hidden relative"
+            className="relative mt-10 aspect-[16/10] w-full max-w-4xl overflow-hidden rounded-[--r-xl] sm:mt-16 md:h-[400px] md:aspect-auto"
           >
-            <img loading="lazy" decoding="async" src="/images/hero-onetime.jpg" alt="Chefit arriving" className="w-full h-full object-cover mix-blend-overlay opacity-90" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+            <img loading="lazy" decoding="async" src="/images/toque-chefs-hero.png" alt="Chef preparing a meal for a one-time booking" className="w-full h-full object-cover mix-blend-overlay opacity-90" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
           </motion.div>
         </div>
       </section>
 
       {/* 2. WHY CHOOSE CHEFIT */}
-      <section className="bg-white py-24 px-4 md:px-8">
+      <section className="bg-white px-4 py-14 sm:py-24 md:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="mb-10 text-center sm:mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-[#1C1C1C]">Why Choose Chefit?</h2>
             <p className="text-lg text-gray-500 mt-4">Get a certified cook to prepare delicious food in your kitchen.</p>
           </div>
@@ -79,7 +79,7 @@ export default function OneTimeCook() {
               { icon: '👨‍🍳', title: 'Trained & Verified Cooks', desc: 'Professionally trained & background verified cooks for quality service.' },
               { icon: '⚡', title: 'Quick Service', desc: 'Assured cook arrival within minutes of booking.' }
             ].map((f, i) => (
-              <motion.div key={i} variants={fadeUp} whileHover={{ y: -5 }} className="bg-[#fff8ef] p-10 rounded-[--r-xl] flex flex-col items-center text-center shadow-sm border border-orange-100/50">
+              <motion.div key={i} variants={fadeUp} whileHover={{ y: -5 }} className="flex flex-col items-center rounded-[--r-xl] border border-orange-100/50 bg-[#fff8ef] p-6 text-center shadow-sm sm:p-10">
                 <div className="text-5xl mb-6 bg-white p-4 rounded-full shadow-sm">{f.icon}</div>
                 <h3 className="text-2xl font-bold text-[#1C1C1C] mb-3">{f.title}</h3>
                 <p className="text-gray-600 text-lg">{f.desc}</p>
@@ -90,9 +90,9 @@ export default function OneTimeCook() {
       </section>
 
       {/* 3. PRICING & SCOPE */}
-      <section className="bg-[#f3eadf] py-24 px-4 md:px-8">
+      <section className="bg-[#f3eadf] px-4 py-14 sm:py-24 md:px-8">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="mb-10 text-center sm:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#1C1C1C]">Clear & Simple Pricing</h2>
           </div>
 
@@ -101,7 +101,7 @@ export default function OneTimeCook() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={SPRING}
-            className="bg-white p-10 md:p-14 rounded-[--r-xl] shadow-lg flex flex-col md:flex-row gap-12"
+            className="flex flex-col gap-8 rounded-[--r-xl] bg-white p-6 shadow-lg sm:p-10 md:flex-row md:gap-12 md:p-14"
           >
             <div className="flex-1 flex flex-col justify-center border-b md:border-b-0 md:border-r border-gray-200 pb-8 md:pb-0 md:pr-12">
               <h3 className="text-3xl font-bold text-[#1C1C1C] mb-2">Base Session</h3>

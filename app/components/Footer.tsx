@@ -71,8 +71,8 @@ export function Footer() {
 
   return (
     <footer className="bg-charcoal text-gray-400">
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-20">
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr] md:gap-12">
           {/* Brand */}
           <motion.div
             initial="hidden"
@@ -154,7 +154,7 @@ export function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-white/5 bg-[#111]">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-4 text-center sm:flex-row sm:px-6 sm:text-left">
           <p className="text-xs text-gray-500">© {new Date().getFullYear()} Toque — All rights reserved</p>
           <div className="flex items-center gap-4 text-xs">
             <Link to="/privacy-policy" className="text-gray-500 transition-colors hover:text-[#C9A227]">Privacy Policy</Link>
