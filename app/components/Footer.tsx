@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { motion } from "framer-motion";
+import { site } from "~/lib/site";
 
 const SPRING = { type: "spring", mass: 1, stiffness: 300, damping: 30 } as const;
 
@@ -37,21 +38,14 @@ export function Footer() {
   const socials = [
     {
       label: "Facebook",
-      href: "https://facebook.com",
+      href: site.social.facebook,
       icon: (
         <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
       ),
     },
     {
-      label: "Twitter",
-      href: "https://twitter.com",
-      icon: (
-        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
-      ),
-    },
-    {
       label: "Instagram",
-      href: "https://instagram.com",
+      href: site.social.instagram,
       icon: (
         <>
           <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
@@ -62,7 +56,7 @@ export function Footer() {
     },
     {
       label: "LinkedIn",
-      href: "https://linkedin.com",
+      href: site.social.linkedin,
       icon: (
         <>
           <path
@@ -96,6 +90,9 @@ export function Footer() {
               India's most trusted platform for professional home-cooking
               services — Delhi NCR, Bengaluru &amp; Mumbai.
             </p>
+            <a href={`mailto:${site.contact.email}`} className="mt-3 inline-block text-sm text-[#C9A227] hover:text-white transition-colors">
+              {site.contact.email}
+            </a>
 
             {/* Social icons */}
             <div className="flex gap-3 mt-6">

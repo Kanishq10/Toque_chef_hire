@@ -1,10 +1,9 @@
 import type { Route } from './+types/route';
 import { Link } from 'react-router';
+import { buildMeta } from "~/lib/site";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: 'Cooks Near Me — Toque' },
-  ];
+  return buildMeta({ title: "Find Home Cooks Near You | Toque", description: "Discover trained, background-verified home cooks for everyday meals and special occasions in India’s major cities.", path: "/cooks", image: "/images/toque-chef-food.png" });
 }
 
 export default function CooksRoute() {

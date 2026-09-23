@@ -1,17 +1,9 @@
 import type { Route } from "./+types/route";
 import ContactUs from "~/components/Contact";
+import { buildMeta } from "~/lib/site";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: "ChefKart Contact" },
-    { name: "description", content: "Hire chefs" },
-    { name: "keywords", content: "chef, cart, keyword3" },
-    { property: "og:title", content: "ChefKart Contact | Proxima Tech" },
-    { property: "og:description", content: "Hire chefs through ChefKart" },
-    { property: "og:url", content: "https://yoursite.com/contact" },
-    { name: "twitter:card", content: "summary_large_image" },
-    { name: "robots", content: "index, follow" },
-  ];
+  return buildMeta({ title: "Contact Toque | Find a Home Cook", description: "Talk to the Toque team about a regular home cook, a one-time cooking service, or a chef for your next gathering.", path: "/contact", image: "/images/toque-chefs-hero.png" });
 }
 
 export default function Contact() {

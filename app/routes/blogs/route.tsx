@@ -1,10 +1,9 @@
 import type { Route } from './+types/route';
 import { Link } from 'react-router';
+import { buildMeta } from "~/lib/site";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: 'Blog — Toque' },
-  ];
+  return buildMeta({ title: "Home Cooking Guides & Ideas | Toque", description: "Helpful guides on finding a home cook, planning meals, and hosting relaxed gatherings at home.", path: "/blogs", image: "/images/food-spread.jpg" });
 }
 
 export default function BlogsRoute() {

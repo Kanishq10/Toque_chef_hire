@@ -1,12 +1,9 @@
 import type { Route } from './+types/route';
 import ChefForParty from '~/components/ChefForParty';
+import { buildMeta } from "~/lib/site";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: 'Chef for Party — Toque' },
-    { name: 'description', content: 'Hire a professional party chef for house parties and events. Starting ₹2,000/visit. Delhi NCR, Bengaluru and Mumbai.' },
-    { name: 'robots', content: 'index, follow' },
-  ];
+  return buildMeta({ title: "Chef for House Parties | Toque", description: "Hire a professional chef for a house party, celebration, or intimate gathering in Delhi NCR, Bengaluru, and Mumbai.", path: "/chef-for-party", image: "/images/hero-party.jpg" });
 }
 
 export default function ChefForPartyRoute() {

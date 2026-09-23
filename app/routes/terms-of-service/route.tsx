@@ -1,9 +1,8 @@
 import type { Route } from './+types/route';
+import { buildMeta } from "~/lib/site";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: 'Terms of Service — Toque' },
-  ];
+  return buildMeta({ title: "Terms of Service | Toque", description: "Read the terms that apply when using Toque’s home-cooking services.", path: "/terms-of-service", robots: "noindex, follow" });
 }
 
 export default function TermsRoute() {

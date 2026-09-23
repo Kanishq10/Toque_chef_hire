@@ -1,12 +1,9 @@
 import type { Route } from './+types/route';
 import ChefConnection from '~/components/ChefConnection';
+import { buildMeta } from "~/lib/site";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: 'Join Toque — Cook with Us & Earn More' },
-    { name: 'description', content: 'Apply to become a Toque professional cook. Earn ₹15,000–₹40,000/month with flexible hours. Free training provided.' },
-    { name: 'robots', content: 'index, follow' },
-  ];
+  return buildMeta({ title: "Become a Toque Cook | Flexible Cooking Work", description: "Apply to join Toque’s community of professional home cooks. Build flexible work and connect with households in your city.", path: "/join-chefkart", image: "/images/hero-join.jpg" });
 }
 
 export default function JoinChefkartRoute() { 

@@ -1,12 +1,9 @@
 import type { Route } from './+types/route';
 import About from '~/components/About';
+import { buildMeta } from "~/lib/site";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: 'About Toque — Our Story & Mission' },
-    { name: 'description', content: 'Learn about Toque — India\'s trusted platform for professional home cooking services. Our story, mission, and the cities we serve.' },
-    { name: 'robots', content: 'index, follow' },
-  ];
+  return buildMeta({ title: "About Toque | Professional Home Cooking Services", description: "Learn how Toque helps Indian households find trusted professional cooks for everyday meals and special occasions.", path: "/about", image: "/images/hero-about.jpg" });
 }
 
 export default function AboutRoute() {

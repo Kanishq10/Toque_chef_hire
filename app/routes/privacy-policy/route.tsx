@@ -1,9 +1,8 @@
 import type { Route } from './+types/route';
+import { buildMeta } from "~/lib/site";
 
 export function meta({}: Route.MetaArgs) {
-  return [
-    { title: 'Privacy Policy — Toque' },
-  ];
+  return buildMeta({ title: "Privacy Policy | Toque", description: "Read how Toque handles the information you share when requesting home-cooking services.", path: "/privacy-policy", robots: "noindex, follow" });
 }
 
 export default function PrivacyPolicyRoute() {

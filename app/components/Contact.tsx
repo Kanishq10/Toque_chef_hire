@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence, type Transition } from "framer-motion";
+import { site } from "~/lib/site";
 
 /* ─── Shared spring configs (GPU-only: transform + opacity) ──── */
 const SPRING: Transition = {
@@ -185,8 +186,13 @@ function FeatureCard({
 
 /* ─── Main component ─────────────────────────────────────────── */
 const ContactUs = () => {
-  const mapEmbedUrl =
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5600.197302077126!2d76.98925220034978!3d28.592745445458405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d110057a1c3cb%3A0x51d4242ea2a6efba!2sThe%20Toque%20Cafe!5e1!3m2!1sen!2sin!4v1788530913361!5m2!1sen!2sin";
+  const [enquirySent, setEnquirySent] = useState(false);
+
+  const handleEnquirySubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setEnquirySent(true);
+    event.currentTarget.reset();
+  };
 
   return (
     <main
@@ -322,22 +328,22 @@ const ContactUs = () => {
             viewport={{ once: true, margin: "-80px" }}
           >
             <ContactCard
-              href="tel:+911234567890"
+              href={`tel:${site.contact.phoneHref}`}
               icon="☎"
               title="Call us"
               subtitle="Speak directly with our support team."
-              detail="+91 123 456 7890"
-              detail2="+91 12345 67890 →"
+              detail={`${site.contact.phoneDisplay} →`}
+              detail2="Daily, 9:00 AM – 9:00 PM"
             />
             <ContactCard
-              href="mailto:support@toque.com"
+              href={`mailto:${site.contact.email}`}
               icon="✉"
               title="Email us"
               subtitle="Send us your questions or requirements."
-              detail="support@toque.com →"
+              detail={`${site.contact.email} →`}
             />
             <ContactCard
-              href="https://wa.me/911234567890"
+              href={site.contact.whatsappHref}
               icon="💬"
               title="WhatsApp"
               subtitle="Message us for quick assistance."
@@ -385,7 +391,7 @@ const ContactUs = () => {
                 },
                 {
                   label: "Current service areas",
-                  value: "Delhi · Gurgaon · Bangalore",
+                  value: "Delhi NCR · Bengaluru · Mumbai",
                 },
                 {
                   label: "Support hours",
@@ -418,7 +424,7 @@ const ContactUs = () => {
               We'll get back to you as soon as possible.
             </p>
 
-            <form className="mt-8 space-y-5">
+            <form className="mt-8 space-y-5" onSubmit={handleEnquirySubmit}>
               <div className="grid gap-5 md:grid-cols-2">
                 <div>
                   <label className="mb-2 block text-sm font-medium">
@@ -426,6 +432,9 @@ const ContactUs = () => {
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    required
+                    autoComplete="name"
                     placeholder="Your name"
                     className="field"
                   />
@@ -436,6 +445,9 @@ const ContactUs = () => {
                   </label>
                   <input
                     type="tel"
+                    name="phone"
+                    required
+                    autoComplete="tel"
                     placeholder="+91"
                     className="field"
                   />
@@ -446,6 +458,9 @@ const ContactUs = () => {
                 <label className="mb-2 block text-sm font-medium">Email</label>
                 <input
                   type="email"
+                  name="email"
+                  required
+                  autoComplete="email"
                   placeholder="you@example.com"
                   className="field"
                 />
@@ -455,7 +470,7 @@ const ContactUs = () => {
                 <label className="mb-2 block text-sm font-medium">
                   What do you need?
                 </label>
-                <select className="field" defaultValue="">
+                <select name="service" className="field" defaultValue="" required>
                   <option value="" disabled>
                     Select a service
                   </option>
@@ -473,6 +488,8 @@ const ContactUs = () => {
                 </label>
                 <textarea
                   rows={6}
+                  name="message"
+                  required
                   placeholder="Tell us about your requirement..."
                   className="field resize-none"
                 />
@@ -495,6 +512,11 @@ const ContactUs = () => {
               >
                 Send Message
               </motion.button>
+              {enquirySent && (
+                <p className="rounded-[12px] bg-[#edf8ee] px-4 py-3 text-sm text-[#286a32]" role="status">
+                  Thanks for your enquiry. This demo form is ready to connect to your email or CRM endpoint.
+                </p>
+              )}
             </form>
           </motion.div>
         </div>
@@ -565,12 +587,10 @@ const ContactUs = () => {
             >
               Find us
             </p>
-            <h2 className="mt-2 text-3xl font-semibold md:text-4xl">
-              Our location
-            </h2>
+            <h2 className="mt-2 text-3xl font-semibold md:text-4xl">Where we serve</h2>
             <p className="mt-3 max-w-2xl text-gray-600">
-              Come visit us or find out more about the areas where Toque
-              provides cooking services.
+              Toque currently helps households find cooking professionals in
+              Delhi NCR, Bengaluru, and Mumbai.
             </p>
           </motion.div>
 
@@ -603,16 +623,18 @@ const ContactUs = () => {
               whileInView={{ opacity: 1, x: 0, transition: SPRING }}
               viewport={{ once: true, margin: "-80px" }}
             >
-              <iframe
-                src={mapEmbedUrl}
-                width="100%"
-                height="500"
-                style={{ border: 0, display: "block" }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Toque location"
-              />
+              <div className="flex h-[500px] flex-col justify-center p-10">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#c89f16]">Service areas</p>
+                <h3 className="mt-3 text-3xl font-semibold text-[#1c1c1c]">Growing city by city.</h3>
+                <ul className="mt-8 space-y-4 text-lg text-gray-600">
+                  <li>Delhi NCR — Delhi, Gurgaon, Noida, Faridabad and Ghaziabad</li>
+                  <li>Bengaluru — select neighbourhoods</li>
+                  <li>Mumbai — select neighbourhoods</li>
+                </ul>
+                <a className="mt-10 font-semibold text-[#8b6c00]" href={`mailto:${site.contact.email}?subject=Service%20availability%20enquiry`}>
+                  Ask about availability in your area →
+                </a>
+              </div>
             </motion.div>
           </div>
         </div>
