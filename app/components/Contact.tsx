@@ -1,5 +1,6 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { motion, AnimatePresence, type Transition } from "framer-motion";
+import { useLocation } from "react-router";
 import { site } from "~/lib/site";
 
 /* ─── Shared spring configs (GPU-only: transform + opacity) ──── */
@@ -186,12 +187,39 @@ function FeatureCard({
 
 /* ─── Main component ─────────────────────────────────────────── */
 const ContactUs = () => {
+  const location = useLocation();
   const [enquirySent, setEnquirySent] = useState(false);
+  const [serviceParam, setServiceParam] = useState("");
+
+  useEffect(() => {
+    const next = new URLSearchParams(location.search).get("service") ?? "";
+    setServiceParam(next);
+  }, [location.search]);
 
   const handleEnquirySubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const payload = {
+      name: String(formData.get("name") ?? "").trim(),
+      phone: String(formData.get("phone") ?? "").trim(),
+      email: String(formData.get("email") ?? "").trim(),
+      service: String(formData.get("service") ?? "").trim(),
+      message: String(formData.get("message") ?? "").trim(),
+      createdAt: new Date().toISOString(),
+    };
+
+    try {
+      const existing = JSON.parse(localStorage.getItem("toque_enquiries") ?? "[]");
+      const list = Array.isArray(existing) ? existing : [];
+      localStorage.setItem("toque_enquiries", JSON.stringify([...list, payload]));
+    } catch {
+      // localStorage may be unavailable in restricted environments, but the app still keeps the UX working.
+    }
+
     setEnquirySent(true);
     event.currentTarget.reset();
+    setServiceParam("");
   };
 
   return (
@@ -293,7 +321,7 @@ const ContactUs = () => {
             <img loading="lazy" decoding="async"
               src="/images/toque-chefs-hero.png"
               alt="Professional Toque chefs"
-              className="aspect-[16/10] w-full object-cover md:h-[420px] md:aspect-auto"
+              className="chef-image-focus aspect-[16/10] w-full object-cover md:h-[420px] md:aspect-auto"
               style={{ display: "block" }}
             />
           </motion.div>
@@ -470,15 +498,21 @@ const ContactUs = () => {
                 <label className="mb-2 block text-sm font-medium">
                   What do you need?
                 </label>
-                <select name="service" className="field" defaultValue="" required>
+                <select
+                  name="service"
+                  className="field"
+                  defaultValue={serviceParam}
+                  key={serviceParam}
+                  required
+                >
                   <option value="" disabled>
                     Select a service
                   </option>
-                  <option>Cook for a Month</option>
-                  <option>One-time Cook</option>
-                  <option>Chef for Party</option>
-                  <option>General Enquiry</option>
-                  <option>Become a Partner</option>
+                  <option value="Cook for a Month">Cook for a Month</option>
+                  <option value="One-time Cook">One-time Cook</option>
+                  <option value="Chef for Party">Chef for Party</option>
+                  <option value="General Enquiry">General Enquiry</option>
+                  <option value="Become a Partner">Become a Partner</option>
                 </select>
               </div>
 
@@ -514,7 +548,7 @@ const ContactUs = () => {
               </motion.button>
               {enquirySent && (
                 <p className="rounded-[12px] bg-[#edf8ee] px-4 py-3 text-sm text-[#286a32]" role="status">
-                  Thanks for your enquiry. This demo form is ready to connect to your email or CRM endpoint.
+                  Thanks for your enquiry. Your request has been saved locally and is ready to be connected to your email or CRM endpoint.
                 </p>
               )}
             </form>
@@ -606,7 +640,7 @@ const ContactUs = () => {
               <img loading="lazy" decoding="async"
                 src="/images/toque-chef-food.png"
                 alt="Toque chef preparing food"
-                className="aspect-[16/10] w-full object-cover lg:h-[500px] lg:aspect-auto"
+                className="chef-food-focus aspect-[16/10] w-full object-cover lg:h-[500px] lg:aspect-auto"
                 style={{ display: "block" }}
               />
             </motion.div>

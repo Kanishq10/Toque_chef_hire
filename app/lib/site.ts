@@ -1,18 +1,18 @@
 export const site = {
   name: "Toque",
-  url: "https://toque.example",
+  url: "https://toquechef.com",
   description:
     "Find trained, background-verified home cooks for everyday meals, one-time cooking, and private parties in India.",
   contact: {
-    email: "hello@toque.example",
-    phoneDisplay: "+91 90000 00000",
-    phoneHref: "+919000000000",
-    whatsappHref: "https://wa.me/919000000000",
+    email: "toquechef@gmail.com",
+    phoneDisplay: "+91 98765 43210",
+    phoneHref: "+919876543210",
+    whatsappHref: "https://wa.me/919876543210",
   },
   social: {
-    facebook: "https://www.facebook.com/toquehome",
-    instagram: "https://www.instagram.com/toquehome",
-    linkedin: "https://www.linkedin.com/company/toquehome",
+    facebook: "https://www.facebook.com/toquechef",
+    instagram: "https://www.instagram.com/toquechef",
+    linkedin: "https://www.linkedin.com/company/toquechef",
   },
 } as const;
 

@@ -1,199 +1,126 @@
-# Toque — Professional Home Chef Booking Platform
+# Toque
 
-> **Apple Fluid Interfaces Edition**
-> This project has been engineered with a focus on "Fluid Interfaces", adopting Apple's iOS-level design philosophy. It features spring-physics animations, interruptible transitions, squircle corner radii, and a glassmorphic tactile UI to create an organic, premium feel.
+Toque is a React Router marketing website for a home-cook booking service in India. It helps visitors learn about the service, choose a cooking option, contact the team, or apply to join the cook network.
 
-## 🌐 Live Demo
-*Target Deployment: Vercel*
+## What the website does
 
----
+- Presents the Toque service and trust proposition.
+- Explains monthly cooks, one-time cooks, and chefs for private parties.
+- Provides about, cook discovery, blog, privacy, and terms pages.
+- Provides enquiry and cook application forms with client-side success states.
+- Uses responsive layouts, animated page transitions, FAQs, CTAs, social links, and food photography.
+- Generates route-level SEO metadata, Open Graph metadata, Twitter metadata, and canonical URLs.
 
-## 📋 Table of Contents
-- [Toque — Professional Home Chef Booking Platform](#toque--professional-home-chef-booking-platform)
-  - [🌐 Live Demo](#-live-demo)
-  - [📋 Table of Contents](#-table-of-contents)
-  - [🛠️ Tech Stack \& Architecture](#️-tech-stack--architecture)
-  - [🎨 Design System (Fluid Interfaces)](#-design-system-fluid-interfaces)
-    - [Color Palette](#color-palette)
-  - [📁 Project Structure](#-project-structure)
-  - [📄 Pages \& Routing Architecture](#-pages--routing-architecture)
-    - [1. Home (`/`)](#1-home-)
-    - [2. About Us (`/about`)](#2-about-us-about)
-    - [3. Contact (`/contact`)](#3-contact-contact)
-    - [4. Cook for a Month (`/cook-for-month`)](#4-cook-for-a-month-cook-for-month)
-    - [5. One Time Cook (`/one-time-cook`)](#5-one-time-cook-one-time-cook)
-    - [6. Chef for Party (`/chef-for-party`)](#6-chef-for-party-chef-for-party)
-    - [7. Join as a Cook (`/join-chefkart`)](#7-join-as-a-cook-join-chefkart)
-  - [⚡ Performance Optimizations](#-performance-optimizations)
-  - [🔌 Backend Integration Points](#-backend-integration-points)
-  - [🖼️ AI Image Generation Guide (Checklist)](#️-ai-image-generation-guide-checklist)
-    - [Core Hero Images (1920x1080)](#core-hero-images-1920x1080)
-    - [Secondary UI Images (1200x900)](#secondary-ui-images-1200x900)
-    - [Horizontal Gallery (1200x800 each)](#horizontal-gallery-1200x800-each)
-  - [🚀 Getting Started](#-getting-started)
-  - [☁️ Deployment](#️-deployment)
+> Important: form data is currently saved only in the visitor's browser `localStorage`. It is not sent to Toque, a database, email, or CRM. Connect a backend before relying on the forms for real business leads.
 
----
+## Technology
 
-## 🛠️ Tech Stack & Architecture
+- React 19
+- React Router 8 Framework Mode with server-side rendering enabled
+- TypeScript
+- Vite 8
+- Tailwind CSS 4
+- Framer Motion
+- React Icons
+- Node.js 24 in the provided Dockerfile
 
-| Technology | Role | Details |
-|---|---|---|
-| **React 19** | UI Framework | Utilizes modern React features for concurrent rendering. |
-| **React Router v8** | Routing / SSR | Configured in Framework mode for optimal data loading and seamless page transitions. |
-| **Vite 8** | Build Tooling | Lightning-fast HMR and optimized production builds. |
-| **Tailwind CSS v4** | Styling Engine | CSS-first approach using `@theme` definitions in `app.css`. |
-| **Framer Motion** | Physics Engine | Handles interruptible spring animations, route transitions, and scroll reveals. |
-| **TypeScript 5** | Type Safety | Strict mode enabled for all components and configurations. |
+## Requirements
 
----
+- Node.js 22 or newer (Node.js 24 is used by Docker)
+- npm
 
-## 🎨 Design System (Fluid Interfaces)
-
-The UI/UX is built strictly around Apple's Fluid Interface guidelines:
-
-1. **Spring Physics**: We use `{ type: "spring", mass: 1, stiffness: 300, damping: 30 }` for snappy, non-linear, interruptible animations. Linear/Ease CSS transitions are disabled for major UI states.
-2. **Tactile Feedback**: All interactive elements (buttons, cards) use `whileTap={{ scale: 0.96 }}` to mimic physical depression.
-3. **Squircle Radii**: Tailored border-radii (`--r-md`, `--r-pill`) guarantee smooth, iOS-like corners, dropping standard CSS boxy edges.
-4. **Glassmorphism**: `.glass-light` and `.glass-dark` utility classes provide backdrop blurs layered over UI components, ensuring depth and hierarchy.
-
-### Color Palette
-- **Charcoal**: `#1C1C1C` (Primary Dark)
-- **Antique Gold**: `#C9A227` (Primary Accent)
-- **Warm White**: `#fff8ef` (Background)
-
----
-
-## 📁 Project Structure
-
-```text
-ChefKart/
-├── app/
-│   ├── components/            # View components and Shared UI modules
-│   │   ├── shared/            # Reusable UI (HowItWorks, ServiceFAQ, AppDownloadCTA)
-│   │   ├── Home.tsx           # Homepage View
-│   │   ├── About.tsx          # About View
-│   │   ├── Contact.tsx        # Contact View
-│   │   └── ...                # Other views
-│   ├── routes/                # Route modules containing `meta` and default exports
-│   │   ├── _index/route.tsx
-│   │   ├── about/route.tsx
-│   │   └── ...
-│   ├── root.tsx               # Root layout, contains <AnimatePresence> for route transitions
-│   ├── routes.ts              # Route registry (maps URLs to route modules)
-│   └── app.css                # Global styles, Tailwind v4 @theme, Squircle utilities
-├── public/
-│   ├── images/                # Static assets (See Image Guide below)
-│   └── logo.svg               # Site logo
-├── package.json               # NPM Scripts and dependencies
-├── vite.config.ts             # Vite/React Router configuration
-└── vercel.json                # Vercel deployment overrides
-```
-
----
-
-## 📄 Pages & Routing Architecture
-
-This platform utilizes **React Router v8**. The routing registry is in `app/routes.ts`, mapping clean URLs to route modules in `app/routes/`. The actual UI components reside in `app/components/`.
-
-### 1. Home (`/`)
-- **File**: `Home.tsx`
-- **Purpose**: The main landing page. Highlights key metrics, core services (Cook for Month, One Time, Party Chef), customer testimonials, and an app download CTA.
-- **Animations**: Uses Framer Motion's `whileInView` for scroll reveals, and a horizontally scrolling gallery with snap physics.
-
-### 2. About Us (`/about`)
-- **File**: `About.tsx`
-- **Purpose**: Company story, mission statement, and geographical presence.
-- **Animations**: Staggered fade-ins for timeline milestones and value propositions.
-
-### 3. Contact (`/contact`)
-- **File**: `Contact.tsx`
-- **Purpose**: Main conversion hub. Includes an embedded interactive map, contact details, and a functional inquiry form.
-- **Integration**: Target endpoint for all "Book Now" CTAs across the site.
-
-### 4. Cook for a Month (`/cook-for-month`)
-- **File**: `CookForMonth.tsx`
-- **Purpose**: Details the monthly subscription service. Features a dynamic pricing toggle and shared FAQ/How-it-works sections.
-
-### 5. One Time Cook (`/one-time-cook`)
-- **File**: `OneTimeCook.tsx`
-- **Purpose**: On-demand chef booking service page.
-
-### 6. Chef for Party (`/chef-for-party`)
-- **File**: `ChefForParty.tsx`
-- **Purpose**: High-end event catering service details with premium imagery placeholders.
-
-### 7. Join as a Cook (`/join-chefkart`)
-- **File**: `ChefConnection.tsx`
-- **Purpose**: B2B / Partner portal. A dedicated application form for chefs looking to join the Toque network.
-
----
-
-## ⚡ Performance Optimizations
-
-- **Route Transitions**: `<AnimatePresence mode="wait">` ensures smooth DOM mounting/unmounting without layout thrashing.
-- **Lazy Loading**: All below-the-fold `<img>` tags have been updated with `loading="lazy"` and `decoding="async"`.
-- **Image Fallbacks**: Inline `onError` handlers prevent broken image icons by replacing them with smooth CSS gradients while assets are missing.
-- **Type Safety**: Zero `any` types; all props are strictly typed to prevent runtime errors.
-
----
-
-## 🔌 Backend Integration Points
-
-The app uses React Router Framework Mode with server-side rendering. The forms currently do not send submissions; connect them to a backend before accepting customer or cook leads:
-
-1. **Customer Inquiries**
-   - **File**: `app/components/Contact.tsx`
-   - **Action**: Replace the local success state with a real submission request.
-   - **Endpoint**: Implement a `POST /api/contact` fetch call here.
-
-2. **Chef Applications**
-   - **File**: `app/components/ChefConnection.tsx`
-   - **Action**: Replace the browser alert with a real submission request.
-   - **Endpoint**: Implement a `POST /api/cook-application` fetch call here.
-
-3. **Booking Flow**
-   - **Files**: `CookForMonth.tsx`, `OneTimeCook.tsx`, `ChefForParty.tsx`
-   - **Action**: Currently, all "Book Now" buttons link to `/contact`. You will need to replace these with stateful modals or redirects to a dedicated booking flow (e.g., `POST /api/booking`).
-
----
-
-## 🖼️ Images
-
-Site images are stored in `public/images/` as PNG files. The active photo assets have a restrained contemporary Indian miniature-painting treatment in warm ivory, antique gold, charcoal, saffron, and leaf green. The home gallery uses `food-1.png` through `food-6.png`; shared hero, food, and spread images use the same style. The one-time cook page reuses `toque-chefs-hero.png` because there is no separate one-time hero asset yet. `toque-cta-background.png` is an unused legacy banner with text baked into the image.
-
----
-
-## 🚀 Getting Started
+## Local development
 
 ```bash
-# Install dependencies
-npm install
-
-# Start development server (port 5173 by default)
+npm ci
 npm run dev
-
-# Type check
-npm run typecheck
-
-# Production build
-npm run build
 ```
 
-## ☁️ Deployment
+The development server listens on `http://localhost:3000`.
 
-This project is configured for seamless deployment to **Vercel**.
-1. Push your repository to GitHub.
-2. Import the project in your Vercel Dashboard.
-3. The `vercel.json` and Vite config will automatically handle the build and routing.
-4. Deploy!
+Useful checks:
 
-### 8. Additional Routes (Reference Completeness)
-To match the original reference structure, the following routes have been registered and have placeholder pages:
-- `/about-us` (Alias for `/about`)
-- `/contact-us` (Alias for `/contact`)
-- `/join-as-chef` (Alias for `/join-chefkart`)
-- `/cooks` & `/cooks-near-me`
-- `/privacy-policy`
-- `/terms-of-service`
-- `/blogs`
+```bash
+npm run typecheck
+npm run build
+npm run start
+```
+
+`npm run start` serves the production build from `build/server/index.js`. Run `npm run build` first.
+
+## Routes
+
+| URL | Purpose |
+| --- | --- |
+| `/` | Homepage and primary service CTAs |
+| `/about` and `/about-us` | About Toque |
+| `/cook-for-month` | Monthly home-cook service |
+| `/one-time-cook` | One-time cooking service |
+| `/chef-for-party` | Private-party chef service |
+| `/cooks` and `/cooks-near-me` | Cook discovery information |
+| `/contact` and `/contact-us` | Contact details and enquiry form |
+| `/join-chefkart` and `/join-as-chef` | Cook recruitment and application form |
+| `/blogs` | Cooking guides and ideas |
+| `/privacy-policy` | Privacy information |
+| `/terms-of-service` | Terms information |
+
+Unknown URLs return the application's 404 response.
+
+## Deploy to Vercel
+
+This repository includes Vercel configuration and uses React Router SSR. The recommended deployment flow is:
+
+1. Push the repository to GitHub.
+2. In Vercel, choose **Add New Project**, import the repository, and keep the project root at the repository root.
+3. Use the detected React Router framework settings. The repository's `vercel.json` sets `npm run build` as the build command and `npm ci` as the install command.
+4. Deploy a Preview first and test direct loads for `/`, `/about`, `/contact`, and an unknown URL.
+5. Add the production domain after the Preview checks pass.
+
+CLI deployment:
+
+```bash
+npm install --global vercel
+vercel login
+vercel
+vercel --prod
+```
+
+There are currently no required environment variables. Confirm the production domain and contact/social details in `app/lib/site.ts` before launch.
+
+For the deployment checklist and troubleshooting details, read [documentation.md](documentation.md).
+
+## Docker deployment
+
+The included multi-stage `Dockerfile` builds and runs the SSR server:
+
+```bash
+docker build -t toque .
+docker run --rm -p 3000:3000 toque
+```
+
+This image can be used on a Node/Docker host such as Cloud Run, ECS, Railway, Fly.io, or another container platform.
+
+## Project structure
+
+```text
+app/
+	components/       Reusable UI and page sections
+	lib/site.ts       Brand, contact, social, and SEO helpers
+	routes/           Route modules
+	root.tsx          App shell, navigation, footer, and error boundary
+	routes.ts         Route map and aliases
+public/images/      Static food and hero images
+react-router.config.ts  SSR configuration
+vite.config.ts          Vite and React Router plugins
+vercel.json              Vercel build configuration
+Dockerfile               Production container build
+documentation.md         Detailed maintenance and deployment guide
+```
+
+## Known limitations before production launch
+
+- Enquiries and cook applications are browser-local only.
+- There is no authentication, booking workflow, admin dashboard, database, or payment integration.
+- Large PNG assets should be converted to WebP/AVIF and served responsively for better mobile performance.
+- There are no automated browser smoke tests yet.
+- The build emits a non-blocking Vite `envFile` deprecation warning from the current React Router/Vite integration.

@@ -53,7 +53,7 @@ export default function CookForMonth() {
             <img loading="lazy" decoding="async"
               src="/images/hero-month.png"
               alt="Cook preparing meal"
-              className="w-full h-full object-cover opacity-90"
+              className="chef-image-focus absolute inset-0 h-full w-full object-cover opacity-90"
               onError={(e) => { e.currentTarget.style.display = 'none'; }}
             />
           </motion.div>

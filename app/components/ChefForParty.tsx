@@ -51,7 +51,7 @@ export default function ChefForParty() {
             <img loading="lazy" decoding="async"
               src="/images/hero-party.png"
               alt="Party Chef cooking"
-              className="w-full h-full object-cover opacity-90"
+              className="chef-image-focus absolute inset-0 h-full w-full object-cover opacity-90"
               onError={(e) => { e.currentTarget.style.display = 'none'; }}
             />
           </motion.div>
@@ -134,7 +134,7 @@ export default function ChefForParty() {
         ]}
       />
 
-      {/* 5. GALLERY PLACEHOLDER */}
+      {/* 5. GALLERY */}
       <section className="overflow-hidden bg-[#f3eadf] px-4 py-14 sm:py-24 md:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -149,15 +149,27 @@ export default function ChefForParty() {
             viewport={{ once: true, margin: "-80px" }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {[1, 2, 3, 4].map((item) => (
+            {[
+              { src: '/images/party-spread.png', alt: 'Indian party feast set around a dining table' },
+              { src: '/images/food-1.png', alt: 'Festive Indian dishes served for a party' },
+              { src: '/images/food-2.png', alt: 'Paneer curry with rice and naan' },
+              { src: '/images/food-3.png', alt: 'Colourful vegetable dishes served family-style' }
+            ].map((image) => (
               <motion.div
-                key={item}
+                key={image.src}
                 variants={fadeUp}
                 whileHover={{ scale: 1.03 }}
                 transition={SPRING}
-                className="aspect-[3/2] rounded-[--r-xl] bg-gradient-to-br from-gray-300 to-gray-400 shadow-md relative overflow-hidden"
+                className="relative aspect-[3/2] overflow-hidden rounded-[--r-xl] bg-gradient-to-br from-[#1C1C1C] to-[#2d2416] shadow-md"
               >
-                <div className="absolute inset-0 flex items-center justify-center text-white/50 font-bold">Food Image</div>
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src={image.src}
+                  alt={image.alt}
+                  className="h-full w-full object-cover opacity-90 transition-opacity hover:opacity-100"
+                  onError={(event) => { event.currentTarget.style.display = 'none'; }}
+                />
               </motion.div>
             ))}
           </motion.div>

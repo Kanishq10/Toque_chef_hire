@@ -74,6 +74,20 @@ body {
 .btn-gold      { background-color: var(--antique-gold); color: var(--charcoal); }
 .hover-gold:hover { color: var(--antique-gold); }
 
+/* Chef artwork leaves intentional negative space on the left. Keep the cooks
+   as the focal point when the same artwork is used in a tighter frame. */
+.chef-image-focus {
+  object-position: 72% 35%;
+  transform: scale(1.16);
+  transform-origin: 72% 35%;
+}
+
+.chef-food-focus {
+  object-position: 68% 42%;
+  transform: scale(1.08);
+  transform-origin: 68% 42%;
+}
+
 /* ── Glassmorphism ── */
 .glass-dark {
   background-color: rgba(28, 28, 28, 0.82);

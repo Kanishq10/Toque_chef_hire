@@ -53,7 +53,7 @@ export default function OneTimeCook() {
             transition={{ ...SPRING, delay: 0.3 }}
             className="relative mt-10 aspect-[16/10] w-full max-w-4xl overflow-hidden rounded-[--r-xl] sm:mt-16 md:h-[400px] md:aspect-auto"
           >
-            <img loading="lazy" decoding="async" src="/images/toque-chefs-hero.png" alt="Chef preparing a meal for a one-time booking" className="w-full h-full object-cover mix-blend-overlay opacity-90" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+            <img loading="lazy" decoding="async" src="/images/toque-chefs-hero.png" alt="Chef preparing a meal for a one-time booking" className="chef-image-focus absolute inset-0 h-full w-full object-cover opacity-90" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
           </motion.div>
         </div>
       </section>

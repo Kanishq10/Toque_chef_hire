@@ -117,7 +117,7 @@ export default function Home() {
             <img
               src="/images/toque-chefs-hero.png"
               alt="Toque chefs preparing fresh food"
-              className="h-full w-full object-cover"
+              className="chef-image-focus absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
             <p className="absolute bottom-4 left-4 right-4 text-xs font-semibold uppercase leading-5 tracking-[0.14em] text-white/80 sm:bottom-5 sm:left-5 sm:text-sm sm:tracking-[0.18em]">
@@ -217,9 +217,9 @@ export default function Home() {
             viewport={{ once: true, margin: "-80px" }}
           >
             <img
-              src="/images/toque-chefs-hero.png"
+              src="/images/toque-chef-food.png"
               alt="A Toque cook and a freshly prepared meal"
-              className="h-full w-full object-cover"
+              className="chef-food-focus absolute inset-0 h-full w-full object-cover"
               loading="lazy"
               decoding="async"
             />

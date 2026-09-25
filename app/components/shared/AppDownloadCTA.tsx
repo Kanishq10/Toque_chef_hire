@@ -20,7 +20,7 @@ export function AppDownloadCTA({
   subline = "Book, track and communicate with your Toque cook directly from our app.",
   showBadges = true,
   ctaText = "Download the App",
-  ctaHref = "/contact",
+  ctaHref = "/contact?service=General%20Enquiry",
 }: Props) {
   return (
     <section
@@ -115,7 +115,7 @@ export function AppDownloadCTA({
             viewport={{ once: true, margin: "-80px" }}
           >
             <div
-              className="flex aspect-[3/4] w-full max-w-64 items-center justify-center sm:h-[28rem] sm:w-64 sm:aspect-auto"
+              className="relative flex aspect-[3/4] w-full max-w-64 items-center justify-center sm:h-[28rem] sm:w-64 sm:aspect-auto"
               style={{
                 backgroundColor: "rgba(255,255,255,0.04)",
                 borderRadius: "var(--r-xl)",
@@ -127,7 +127,7 @@ export function AppDownloadCTA({
                 decoding="async"
                 src="/images/toque-chef-food.png"
                 alt="Toque chef preparing fresh food"
-                className="h-full w-full object-cover"
+                className="chef-food-focus absolute inset-0 h-full w-full object-cover"
                 style={{ borderRadius: "var(--r-xl)" }}
               />
             </div>

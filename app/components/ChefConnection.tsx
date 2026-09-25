@@ -11,6 +11,27 @@ export default function ChefConnection() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      fullName: String(formData.get('fullName') ?? '').trim(),
+      mobile: String(formData.get('mobile') ?? '').trim(),
+      city: String(formData.get('city') ?? '').trim(),
+      experience: String(formData.get('experience') ?? '').trim(),
+      cuisine: String(formData.get('cuisine') ?? '').trim(),
+      occupation: String(formData.get('occupation') ?? '').trim(),
+      intro: String(formData.get('intro') ?? '').trim(),
+      createdAt: new Date().toISOString(),
+    };
+
+    try {
+      const existing = JSON.parse(localStorage.getItem('toque_cook_applications') ?? '[]');
+      const list = Array.isArray(existing) ? existing : [];
+      localStorage.setItem('toque_cook_applications', JSON.stringify([...list, payload]));
+    } catch {
+      // localStorage may be unavailable in restricted environments, but the experience still works gracefully.
+    }
+
     setApplicationSent(true);
     e.currentTarget.reset();
   };
@@ -61,7 +82,7 @@ export default function ChefConnection() {
             transition={SPRING}
             className="relative aspect-[16/10] overflow-hidden rounded-[32px] bg-gradient-to-tr from-[#C9A227] to-[#1C1C1C] shadow-2xl lg:h-[500px] lg:aspect-auto"
           >
-            <img loading="lazy" decoding="async" src="/images/hero-join.png" alt="Join Toque" className="w-full h-full object-cover mix-blend-overlay opacity-80" />
+            <img loading="lazy" decoding="async" src="/images/hero-join.png" alt="Join Toque" className="chef-image-focus absolute inset-0 h-full w-full object-cover opacity-90" />
           </motion.div>
         </div>
       </section>
@@ -192,17 +213,17 @@ export default function ChefConnection() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               <div>
                 <label className="block text-sm font-semibold mb-2">Full Name</label>
-                <input type="text" required className="field w-full p-4 rounded-[16px] border border-gray-200 outline-none focus:border-[#C9A227] bg-white" placeholder="John Doe" />
+                <input name="fullName" type="text" required className="field w-full p-4 rounded-[16px] border border-gray-200 outline-none focus:border-[#C9A227] bg-white" placeholder="John Doe" />
               </div>
               
               <div>
                 <label className="block text-sm font-semibold mb-2">Mobile Number</label>
-                <input type="tel" required className="field w-full p-4 rounded-[16px] border border-gray-200 outline-none focus:border-[#C9A227] bg-white" placeholder="+91 00000 00000" />
+                <input name="mobile" type="tel" required className="field w-full p-4 rounded-[16px] border border-gray-200 outline-none focus:border-[#C9A227] bg-white" placeholder="+91 00000 00000" />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold mb-2">City</label>
-                <select required className="field w-full p-4 rounded-[16px] border border-gray-200 outline-none focus:border-[#C9A227] bg-white appearance-none">
+                <select name="city" required className="field w-full p-4 rounded-[16px] border border-gray-200 outline-none focus:border-[#C9A227] bg-white appearance-none">
                   <option value="">Select a city</option>
                   <option>Delhi</option>
                   <option>Gurgaon</option>
@@ -217,7 +238,7 @@ export default function ChefConnection() {
 
               <div>
                 <label className="block text-sm font-semibold mb-2">Years of cooking experience</label>
-                <select required className="field w-full p-4 rounded-[16px] border border-gray-200 outline-none focus:border-[#C9A227] bg-white appearance-none">
+                <select name="experience" required className="field w-full p-4 rounded-[16px] border border-gray-200 outline-none focus:border-[#C9A227] bg-white appearance-none">
                   <option value="">Select experience</option>
                   <option>Less than 1 year</option>
                   <option>1–3 years</option>
@@ -228,12 +249,12 @@ export default function ChefConnection() {
 
               <div>
                 <label className="block text-sm font-semibold mb-2">Cuisine speciality</label>
-                <input type="text" required className="field w-full p-4 rounded-[16px] border border-gray-200 outline-none focus:border-[#C9A227] bg-white" placeholder="e.g. North Indian, South Indian, Chinese" />
+                <input name="cuisine" type="text" required className="field w-full p-4 rounded-[16px] border border-gray-200 outline-none focus:border-[#C9A227] bg-white" placeholder="e.g. North Indian, South Indian, Chinese" />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold mb-2">Current occupation</label>
-                <select required className="field w-full p-4 rounded-[16px] border border-gray-200 outline-none focus:border-[#C9A227] bg-white appearance-none">
+                <select name="occupation" required className="field w-full p-4 rounded-[16px] border border-gray-200 outline-none focus:border-[#C9A227] bg-white appearance-none">
                   <option value="">Select occupation</option>
                   <option>Unemployed</option>
                   <option>Working as home cook</option>
@@ -244,7 +265,7 @@ export default function ChefConnection() {
 
               <div>
                 <label className="block text-sm font-semibold mb-2">Brief introduction</label>
-                <textarea rows={4} className="field w-full p-4 rounded-[16px] border border-gray-200 outline-none focus:border-[#C9A227] bg-white resize-none" placeholder="Tell us about yourself and your cooking experience"></textarea>
+                <textarea name="intro" rows={4} className="field w-full p-4 rounded-[16px] border border-gray-200 outline-none focus:border-[#C9A227] bg-white resize-none" placeholder="Tell us about yourself and your cooking experience"></textarea>
               </div>
 
               <motion.button
@@ -255,6 +276,11 @@ export default function ChefConnection() {
                 Submit Application
               </motion.button>
               
+              {applicationSent && (
+                <p className="rounded-[12px] bg-[#edf8ee] px-4 py-3 text-sm text-[#286a32]" role="status">
+                  Your application has been saved locally and is ready to be connected to your recruiter or CRM workflow.
+                </p>
+              )}
               <p className="text-center text-sm text-gray-500 mt-2">
                 Our team will contact you within 48 hours of receiving your application.
               </p>
