@@ -1,49 +1,55 @@
 # Toque chef hire
 
-**Portfolio project** · A full-stack React Router application for chef hiring and marketplace workflows.
+A React Router marketplace application for browsing chef services and managing hiring workflows.
 
 ## Overview
 
-A full-stack React Router application for chef hiring and marketplace workflows.
+The repository contains an implemented application or analysis project with code organized around its primary runtime, interface, data, or automation responsibilities.
+
+## Key Features
+
+- Component-based interface
+- Client-side state and event handling
+- Reusable layout and feature modules
+- Responsive browser presentation
 
 ## Technology Stack
 
-- `Node.js`
-- `React`
-- `Vite`
-- `Tailwind CSS`
-- `TypeScript`
-- `CSS`
+| Area | Technology |
+|---|---|
+| Platform | Node.js |
+| Library / Framework / Tool | React |
+| Library / Framework / Tool | Vite |
+| Library / Framework / Tool | Tailwind CSS |
+| Library / Framework / Tool | React Router |
+| Library / Framework / Tool | TypeScript |
+| Library / Framework / Tool | CSS |
+| Platform | Docker |
 
-## How the Repository Works
+## Architecture and Data Flow
 
 ```mermaid
 flowchart LR
-    N0["Client request<br/> HTTP or UI action"]
-    N1["Route<br/> Map the request"]
+    N0["Route / Component<br/> A route or component initializes the interface."]
+    N1["Input and State<br/> User actions update component or application state."]
+    N2["Data Resolution<br/> Properties, hooks, or API responses provide data."]
+    N3["Render<br/> Reusable components produce the current interface."]
+    N4["User Feedback<br/> Loading, validation, and success states are presented."]
     N0 --> N1
-    N2["Controller / Service<br/> Apply application logic"]
     N1 --> N2
-    N3["Data / Response<br/> Read, update, and return data"]
     N2 --> N3
+    N3 --> N4
 ```
 
 | Stage | Responsibility |
 |---|---|
-| **Client request** | HTTP or UI action |
-| **Route** | Map the request |
-| **Controller / Service** | Apply application logic |
-| **Data / Response** | Read, update, and return data |
+| **Route / Component** | A route or component initializes the interface. |
+| **Input and State** | User actions update component or application state. |
+| **Data Resolution** | Properties, hooks, or API responses provide data. |
+| **Render** | Reusable components produce the current interface. |
+| **User Feedback** | Loading, validation, and success states are presented. |
 
-## Concepts Covered
-
-- Component-based UI
-- State and props
-- Event handling
-- Reusable layout
-- Client-side rendering
-
-## Repository Map
+## Repository Structure
 
 - `.agents`
 - `.dockerignore`
@@ -57,11 +63,27 @@ flowchart LR
 - `public`
 - `react-router.config.ts`
 - `tsconfig.json`
+- `vercel.json`
+- `vite.config.ts`
 
-## Recruiter Summary
+## Setup
 
-This repository demonstrates practical implementation skills, repository organization, and an end-to-end understanding of the project workflow. It is suitable as a focused example of applied software or data work.
+1. Install Node.js and npm.
+2. Run `npm install` from the repository root.
+3. Start the project with the applicable script below.
 
----
+## Usage
 
-<sub>Documentation is concise and project-focused; source code was not modified.</sub>
+- `npm run build` — react-router build
+- `npm run dev` — react-router dev
+- `npm run start` — react-router-serve ./build/server/index.js
+- `npm run typecheck` — react-router typegen && tsc
+
+## Configuration
+
+Review `package.json` for available scripts and runtime dependencies. Add environment variables locally only when a feature requires external credentials or service configuration.
+
+## Verification
+
+- `npm run build` — react-router build
+- `npm run typecheck` — react-router typegen && tsc
