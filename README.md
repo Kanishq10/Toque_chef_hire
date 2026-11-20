@@ -1,44 +1,67 @@
-# Toque_chef_hire
+# Toque chef hire
 
-Source code and project resources for Toque_chef_hire.
+**Portfolio project** · A full-stack React Router application for chef hiring and marketplace workflows.
 
 ## Overview
 
-This repository contains the source code and resources for **Toque_chef_hire**.
+A full-stack React Router application for chef hiring and marketplace workflows.
 
-## Technologies
+## Technology Stack
 
-- CSS
-- Dockerfile
-- TypeScript
+- `Node.js`
+- `React`
+- `Vite`
+- `Tailwind CSS`
+- `TypeScript`
+- `CSS`
 
-## Getting Started
+## How the Repository Works
 
-```bash
-git clone https://github.com/Kanishq10/Toque_chef_hire.git
-cd Toque_chef_hire
+```mermaid
+flowchart LR
+    N0["Client request<br/> HTTP or UI action"]
+    N1["Route<br/> Map the request"]
+    N0 --> N1
+    N2["Controller / Service<br/> Apply application logic"]
+    N1 --> N2
+    N3["Data / Response<br/> Read, update, and return data"]
+    N2 --> N3
 ```
 
-Review the project files and configuration to install dependencies and start the application.
+| Stage | Responsibility |
+|---|---|
+| **Client request** | HTTP or UI action |
+| **Route** | Map the request |
+| **Controller / Service** | Apply application logic |
+| **Data / Response** | Read, update, and return data |
 
-## Repository Contents
+## Concepts Covered
+
+- Component-based UI
+- State and props
+- Event handling
+- Reusable layout
+- Client-side rendering
+
+## Repository Map
 
 - `.agents`
 - `.dockerignore`
 - `.gitignore`
 - `.vscode`
-- `Dockerfile`
-- `README.md`
 - `app`
+- `Dockerfile`
 - `documentation.md`
 - `package-lock.json`
 - `package.json`
 - `public`
 - `react-router.config.ts`
 - `tsconfig.json`
-- `vercel.json`
-- `vite.config.ts`
 
-## Contributing
+## Recruiter Summary
 
-Contributions are welcome. Fork the repository, create a feature branch, and open a pull request.
+This repository demonstrates practical implementation skills, repository organization, and an end-to-end understanding of the project workflow. It is suitable as a focused example of applied software or data work.
+
+---
+
+<sub>Documentation is concise and project-focused; source code was not modified.</sub>
